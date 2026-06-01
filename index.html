@@ -75,17 +75,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
   background:var(--brand-mid);cursor:pointer;border:2px solid #fff;}
 
-/* SCORE BADGE */
-.score-row{display:flex;align-items:center;gap:16px;margin-top:8px;}
-.score-row input{flex:1;}
-.score-badge{width:58px;height:58px;border-radius:50%;background:var(--brand-light);
-  border:2px solid var(--brand-mid);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;flex-shrink:0;}
-.score-badge .val{font-size:20px;font-weight:700;color:var(--brand);line-height:1;}
-.score-badge .lbl{font-size:9px;color:var(--txt2);}
-
-/* GSE RULER */
-#gse-ruler{position:relative;height:44px;margin-top:6px;}
 
 /* CARDS */
 .card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1.25rem;margin-bottom:1rem;}
@@ -234,15 +223,18 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
 
         <div style="margin-bottom:1.5rem;">
-          <div class="field-label">貴公司同仁平均口說分數（GSE，10–90）</div>
-          <div class="score-row">
-            <input type="range" id="score-slider" min="10" max="90" value="45" step="1" oninput="updateChart()">
-            <div class="score-badge">
-              <span class="val" id="score-display">45</span>
-              <span class="lbl">GSE</span>
-            </div>
-          </div>
-          <div id="gse-ruler"></div>
+          <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
+          <select id="cefr-select" onchange="updateChart()" style="margin-top:6px;">
+            <option value="25">A1</option>
+            <option value="32">A2</option>
+            <option value="39">A2+</option>
+            <option value="46" selected>B1</option>
+            <option value="54">B1+</option>
+            <option value="62">B2</option>
+            <option value="71">B2+</option>
+            <option value="80">C1</option>
+          </select>
+          <div style="font-size:11px;color:var(--txt3);margin-top:8px;">⚠️ 注意：超過 7 成的人口說能力會比多益成績低一個 CEFR 等級以上。若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</div>
         </div>
 
         <div class="card">
@@ -411,8 +403,9 @@ function switchI(tab){
 // ── BENCHMARK ──
 function updateChart(){
   var ind = document.getElementById('sel-industry').value;
-  var user = parseInt(document.getElementById('score-slider').value);
-  document.getElementById('score-display').textContent = user;
+  var sel = document.getElementById('cefr-select');
+  var user = parseInt(sel.value);
+  var cefrLabel = sel.options[sel.selectedIndex].text.split(' — ')[0].replace('＜','<');
   var d = IND[ind];
   var g = d.global;
   var MAX = 90;
@@ -427,11 +420,11 @@ function updateChart(){
       +'<div class="bar-cefr">'+cefr(val)+'</div>'
       +'</div>';
   }
-  document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5') + makeRow('貴公司',user,'#E6760E');
+  document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5') + makeRow('貴公司（'+cefrLabel+'）',user,'#E6760E');
 
   var dg = user-g, cls, msg;
   if(dg>=1){
-    cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）！</strong>您的團隊英文口說已達全球競爭水準。下一步可設定更高招募門檻，或透過 Voxy 企業課程將高潛力同仁持續推升。';
+    cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）！</strong>您的團隊英文口說已達全球競爭水準。下一步可設定更高招募門檻，或規劃針對性的外文培訓計畫，持續強化團隊競爭力。';
   } else if(dg===0){
     cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>表現已達國際水準，建議鎖定高頻使用英文的職能進一步強化，拉開與競爭對手的差距。';
   } else if(dg>=-8){
@@ -442,31 +435,6 @@ function updateChart(){
   document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
 }
 
-// ── GSE RULER ──
-function drawRuler(){
-  var slider = document.getElementById('score-slider');
-  var ruler = document.getElementById('gse-ruler');
-  if(!slider||!ruler) return;
-  var W = slider.getBoundingClientRect().width;
-  if(W < 10){ setTimeout(drawRuler, 150); return; }
-  var ticks = [
-    {v:10,label:'10',sub:'&lt;A1'},{v:22,label:'22',sub:'A1'},
-    {v:30,label:'30',sub:'A2'},{v:43,label:'43',sub:'B1'},
-    {v:51,label:'51',sub:'B1+'},{v:59,label:'59',sub:'B2'},
-    {v:67,label:'67',sub:'B2+'},{v:76,label:'76',sub:'C1'},
-    {v:85,label:'85',sub:'C2'},{v:90,label:'90',sub:''}
-  ];
-  var thumbR=9, trackW=W-thumbR*2;
-  ruler.innerHTML='';
-  ticks.forEach(function(t){
-    var px = thumbR + ((t.v-10)/80)*trackW;
-    var span = document.createElement('span');
-    span.style.cssText='position:absolute;transform:translateX(-50%);text-align:center;left:'+px+'px;top:0;line-height:1.4;white-space:nowrap;';
-    span.innerHTML='<span style="display:block;font-size:12px;font-weight:600;color:var(--txt2);">'+t.label+'</span>'
-      +(t.sub?'<span style="display:block;font-size:10px;color:var(--txt3);">'+t.sub+'</span>':'');
-    ruler.appendChild(span);
-  });
-}
 
 // ── FINDER ──
 var answers={}, qIdx=0;
@@ -587,7 +555,6 @@ function makeChart4(){
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', function(){
   updateChart();
-  drawRuler();
   buildDots('want-dots',9,10);
   buildDots('have-dots',3,10);
   makeChart2();
@@ -595,7 +562,6 @@ document.addEventListener('DOMContentLoaded', function(){
   makeChart1();
   makeChart4();
 });
-window.addEventListener('resize', drawRuler);
 </script>
 </body>
 </html>
