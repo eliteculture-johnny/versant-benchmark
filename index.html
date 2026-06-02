@@ -225,16 +225,19 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         <div style="margin-bottom:1.5rem;">
           <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
           <select id="cefr-select" onchange="updateChart()" style="margin-top:6px;">
-            <option value="25">A1</option>
-            <option value="32">A2</option>
-            <option value="39">A2+</option>
-            <option value="46" selected>B1</option>
-            <option value="54">B1+</option>
-            <option value="62">B2</option>
-            <option value="71">B2+</option>
-            <option value="80">C1</option>
+            <option value="25">A1　　多益約 10–250</option>
+            <option value="32">A2　　多益約 255–400</option>
+            <option value="39">A2+　多益約 405–500</option>
+            <option value="46" selected>B1　　多益約 505–600</option>
+            <option value="54">B1+　多益約 605–700</option>
+            <option value="62">B2　　多益約 705–800</option>
+            <option value="71">B2+　多益約 805–870</option>
+            <option value="80">C1　　多益約 875–990</option>
           </select>
-          <div style="font-size:11px;color:var(--txt3);margin-top:8px;">⚠️ 注意：超過 7 成的人口說能力會比多益成績低一個 CEFR 等級以上。若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</div>
+          <div style="margin-top:10px;padding:10px 14px;background:#FFF8F3;border-left:3px solid #E6760E;border-radius:0 6px 6px 0;display:flex;gap:8px;align-items:flex-start;">
+            <span style="font-size:15px;flex-shrink:0;margin-top:1px;">⚠️</span>
+            <span style="font-size:12px;color:#712B13;line-height:1.6;"><strong>超過 7 成的人，口說能力會比多益成績低一個 CEFR 等級以上。</strong>若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</span>
+          </div>
         </div>
 
         <div class="card">
@@ -405,7 +408,7 @@ function updateChart(){
   var ind = document.getElementById('sel-industry').value;
   var sel = document.getElementById('cefr-select');
   var user = parseInt(sel.value);
-  var cefrLabel = sel.options[sel.selectedIndex].text.split(' — ')[0].replace('＜','<');
+  var cefrLabel = sel.options[sel.selectedIndex].text.split('\u3000')[0].trim();
   var d = IND[ind];
   var g = d.global;
   var MAX = 90;
