@@ -137,8 +137,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .stat-lbl{font-size:12px;color:var(--txt2);line-height:1.4;}
 
 /* INFO CARDS */
-.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1rem;}
-.info-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1rem 1.1rem;}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1rem;align-items:start;}
+.info-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1rem 1.1rem;height:100%;}
 .info-icon{font-size:18px;margin-bottom:7px;}
 .info-title{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px;}
 .info-body{font-size:12px;color:var(--txt2);line-height:1.6;}
@@ -206,13 +206,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
     <div id="mpanel-benchmark" class="mpanel active">
       <div class="sub-tabs">
         <button class="stab active" onclick="switchSub('compare')">🔎 口說力對標</button>
-        <button class="stab" onclick="switchSub('finder')">📋 評估方法推薦</button>
+        <button class="stab" onclick="switchSub('finder')">📋 測評方法推薦</button>
       </div>
 
       <div id="spanel-compare" class="spanel active">
         <div class="sel-wrap">
           <div class="field-label">貴公司產業</div>
           <select id="sel-industry" onchange="updateChart()">
+            <option value="" disabled selected>請選擇產業</option>
             <option value="tech">科技業</option>
             <option value="finance">金融業</option>
             <option value="itservice">IT 服務 / 軟體</option>
@@ -223,24 +224,27 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
 
         <div style="margin-bottom:1.5rem;">
+          <div id="cefr-section" style="display:none;">
           <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
           <select id="cefr-select" onchange="updateChart()" style="margin-top:6px;">
+            <option value="" disabled selected>請選擇程度</option>
             <option value="25">A1　　多益約 10–250</option>
             <option value="32">A2　　多益約 255–400</option>
             <option value="39">A2+　多益約 405–500</option>
-            <option value="46" selected>B1　　多益約 505–600</option>
+            <option value="46">B1　　多益約 505–600</option>
             <option value="54">B1+　多益約 605–700</option>
             <option value="62">B2　　多益約 705–800</option>
             <option value="71">B2+　多益約 805–870</option>
             <option value="80">C1　　多益約 875–990</option>
           </select>
-          <div style="margin-top:10px;padding:10px 14px;background:#FFF8F3;border-left:3px solid #E6760E;border-radius:0 6px 6px 0;display:flex;gap:8px;align-items:flex-start;">
-            <span style="font-size:15px;flex-shrink:0;margin-top:1px;">⚠️</span>
-            <span style="font-size:12px;color:#712B13;line-height:1.6;"><strong>超過 7 成的人，口說能力會比多益成績低一個 CEFR 等級以上。</strong>若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</span>
+          <div style="margin-top:10px;padding:9px 13px;background:#FFF8F3;border-left:3px solid #E6760E;border-radius:0 6px 6px 0;display:flex;gap:8px;align-items:center;">
+            <span style="font-size:13px;flex-shrink:0;line-height:1;">⚠️</span>
+            <span style="font-size:12px;color:#712B13;line-height:1.5;"><strong>超過 7 成的人，口說能力會比多益成績低一個 CEFR 等級以上。</strong>若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</span>
           </div>
+          </div><!-- end cefr-section -->
         </div>
 
-        <div class="card">
+        <div class="card" id="chart-card" style="display:none;">
           <div class="card-title" id="chart-title">科技業 — 口說 GSE 分數對標（全球基準）</div>
           <div id="bars-container" style="margin-top:1rem;"></div>
           <div class="legend">
@@ -248,9 +252,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
             <div class="legend-item"><div class="legend-dot" style="background:#E6760E;"></div>貴公司</div>
           </div>
         </div>
-        <div id="insight-area"></div>
+        <div id="insight-area" style="display:none;"></div>
 
-        <div class="cta-block">
+        <div class="cta-block" id="benchmark-cta" style="display:none;">
           <div class="cta-title">想知道團隊真實分布？</div>
           <div class="cta-sub">Pearson 口說測驗 17 分鐘完成，即時取得 GSE / CEFR 個人報告</div>
           <a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">預約免費諮詢 →</a>
@@ -330,10 +334,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="stat-card"><div class="stat-num">1.1B</div><div class="stat-lbl">全球具備商務英語能力人口，持續增加中</div></div>
         </div>
         <div class="two-col">
-          <div class="info-card"><div class="info-icon">🌐</div><div class="info-title">海外擴張帶動企業英語需求激增</div><div class="info-body">G-P 全球成長報告指出，73% 的 C-suite 主管認為國際擴張是 2024 年最重要的成長策略。跨境業務增加，直接推高企業對同仁英語口說能力的實質需求。</div></div>
-          <div class="info-card"><div class="info-icon">📈</div><div class="info-title">英語測驗量創 8 年新高</div><div class="info-body">2023 年全球英語測驗量達歷史新高，科技與 BPO 產業成長最快。企業對人才英語能力的要求正在系統性提升。</div></div>
-          <div class="info-card"><div class="info-icon">🌏</div><div class="info-title">亞太各市場英語能力差距正在拉開</div><div class="info-body">印度科技業口說 GSE 59、菲律賓科技業 GSE 66，而亞太平均僅 44。了解自己企業的真實程度，是制定有效培訓策略的第一步。</div></div>
-          <div class="info-card"><div class="info-icon">💬</div><div class="info-title">英語是 AI 時代的人機介面</div><div class="info-body">Financial Times 研究指出，與 AI 系統有效互動需要 strong language skills。英語不只是對外溝通工具，更是提升 AI 工作效率的核心能力。</div></div>
+          <div class="info-card"><div class="info-icon">🌐</div><div class="info-title">海外擴張帶動英語需求</div><div class="info-body">73% 的 C-suite 主管認為國際擴張是 2024 最重要成長策略（G-P 全球報告）。跨境業務增加，英語口說能力的需求也隨之提高。</div></div>
+          <div class="info-card"><div class="info-icon">📈</div><div class="info-title">英語測驗量創 8 年新高</div><div class="info-body">2023 年全球測驗量達歷史新高，科技與 BPO 成長最快，企業對英語能力的要求持續上升。</div></div>
+          <div class="info-card"><div class="info-icon">🌏</div><div class="info-title">亞太各市場差距正在拉開</div><div class="info-body">印度科技業口說 GSE 59、菲律賓 GSE 66，亞太平均僅 44。掌握自身程度，是制定有效策略的第一步。</div></div>
+          <div class="info-card"><div class="info-icon">💬</div><div class="info-title">英語是 AI 時代的核心能力</div><div class="info-body">與 AI 系統有效互動需要精準的語言表達。英語不只用於對外溝通，更直接影響 AI 工具的使用效率。</div></div>
         </div>
         <div class="src-note">Sources: World Economic Forum, Financial Times, G-P Global Growth Report, Pearson</div>
         <div class="cta-block">
@@ -406,12 +410,15 @@ function switchI(tab){
 // ── BENCHMARK ──
 function updateChart(){
   var ind = document.getElementById('sel-industry').value;
+  if(!ind) return;
   var sel = document.getElementById('cefr-select');
-  var user = parseInt(sel.value);
-  var cefrLabel = sel.options[sel.selectedIndex].text.split('\u3000')[0].trim();
   var d = IND[ind];
   var g = d.global;
   var MAX = 90;
+
+  // Step 1: industry selected — show chart with global bar only, reveal CEFR section
+  document.getElementById('chart-card').style.display = 'block';
+  document.getElementById('cefr-section').style.display = 'block';
   document.getElementById('chart-title').textContent = d.label + ' — 口說 GSE 分數對標（全球基準）';
 
   function makeRow(label, val, bg){
@@ -423,19 +430,31 @@ function updateChart(){
       +'<div class="bar-cefr">'+cefr(val)+'</div>'
       +'</div>';
   }
-  document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5') + makeRow('貴公司（'+cefrLabel+'）',user,'#E6760E');
 
-  var dg = user-g, cls, msg;
-  if(dg>=1){
-    cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）！</strong>您的團隊英文口說已達全球競爭水準。下一步可設定更高招募門檻，或規劃針對性的外文培訓計畫，持續強化團隊競爭力。';
-  } else if(dg===0){
-    cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>表現已達國際水準，建議鎖定高頻使用英文的職能進一步強化，拉開與競爭對手的差距。';
-  } else if(dg>=-8){
-    cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>與全球競爭者有落差，建議優先強化主管與對外溝通職能的口說能力。';
+  // Step 2: if CEFR also selected, show company bar + insight + CTA
+  if(sel.value){
+    var user = parseInt(sel.value);
+    var cefrLabel = sel.options[sel.selectedIndex].text.split('　')[0].trim();
+    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5') + makeRow('貴公司（'+cefrLabel+'）',user,'#E6760E');
+    document.getElementById('insight-area').style.display = 'block';
+    document.getElementById('benchmark-cta').style.display = 'block';
+    var dg = user-g, cls, msg;
+    if(dg>=1){
+      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）！</strong>您的團隊英文口說已達全球競爭水準。下一步可設定更高招募門檻，或規劃針對性的外文培訓計畫，持續強化團隊競爭力。';
+    } else if(dg===0){
+      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>表現已達國際水準，建議鎖定高頻使用英文的職能進一步強化，拉開與競爭對手的差距。';
+    } else if(dg>=-8){
+      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>與全球競爭者有落差，建議優先強化主管與對外溝通職能的口說能力。';
+    } else {
+      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>這可能在跨國溝通、與外商往來上造成明顯障礙。建議優先進行全面盤點，再依職能分級設計培訓路徑。';
+    }
+    document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
-    cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>這可能在跨國溝通、與外商往來上造成明顯障礙。建議優先進行全面盤點，再依職能分級設計培訓路徑。';
+    // Only global bar shown
+    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5');
+    document.getElementById('insight-area').style.display = 'none';
+    document.getElementById('benchmark-cta').style.display = 'none';
   }
-  document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
 }
 
 
@@ -444,9 +463,18 @@ var answers={}, qIdx=0;
 var QS=[
   {id:'purpose',text:'主要用途是？',opts:[
     {label:'招募篩選：找出英文達標的應徵者',val:'hire'},
+    {label:'外派人才遴選：評估同仁是否具備海外任職的溝通能力',val:'expat'},
     {label:'培訓前盤點：了解現有同仁程度再規劃課程',val:'ldbase'},
     {label:'培訓後驗收：確認訓練成效',val:'ldpost'},
     {label:'主管層晉升評核',val:'promo'}
+  ]},
+  {id:'speaking_focus',text:'這次測評是否針對口說溝通需求較高的職缺或情境？',opts:[
+    {label:'是，主要評估口說表達與即時溝通能力',val:'yes'},
+    {label:'否，主要評估閱讀理解或書面英語能力',val:'no'}
+  ]},
+  {id:'global',text:'是否希望建立跨國一致的英語測評標準？',opts:[
+    {label:'是，希望台灣、海外據點使用同一套標準，方便橫向比較',val:'yes'},
+    {label:'否，目前只需要在台灣內部使用',val:'no'}
   ]},
   {id:'size',text:'預計需要評估的同仁人數？',opts:[
     {label:'50 人以下（小規模試辦）',val:'small'},
@@ -466,19 +494,36 @@ var QS=[
   ]}
 ];
 var METHODS={
-  versant:   {name:'Pearson 口說測驗',sub:'AI 自動評分，17 分鐘完成',attrs:{'時間':'17 分鐘/人','報告速度':'即時','準確度':'GSE/CEFR 標準化','規模':'50–10,000 人','成本':'中等'},pros:'AI 評分、客觀標準化，可大量部署，報告可直接對接 HR 系統'},
-  toeic_sim: {name:'多益模擬測驗系統',sub:'精英文化自建平台，TOEIC 對標',attrs:{'時間':'約 2 小時/人','報告速度':'即時','準確度':'對標 TOEIC 分數','規模':'無限制','成本':'低'},pros:'台灣企業熟悉的分數語言（TOEIC），適合大量聽讀力盤點或培訓前後測'},
-  voxy:      {name:'Voxy 企業英語學習',sub:'個人化課程 + 程度評估',attrs:{'時間':'Placement 40–50 分鐘','報告速度':'即時','準確度':'CEFR 分級','規模':'20–5,000 人','成本':'中高'},pros:'邊評估邊學習，課後持續追蹤進步，適合已確定啟動訓練計畫的企業'},
-  consultant:{name:'外師一對一面談',sub:'顧問公司安排外籍教師個別訪談',attrs:{'時間':'30–60 分鐘/人','報告速度':'1–2 週','準確度':'主觀 + 質性','規模':'5–50 人','成本':'高'},pros:'能評估溝通風格等質性指標，適合主管層或少量關鍵職缺'},
-  kongying:  {name:'空中英語企業學習網',sub:'情境式媒體教材 + 聽力評估',attrs:{'時間':'彈性自學','報告速度':'週報/月報','準確度':'CEFR A2–B2','規模':'10–10,000 人','成本':'低'},pros:'台灣本土品牌，接受度高，適合作為大量同仁基礎英語維持計畫'}
+  pearson:   {name:'Pearson 口說測驗',sub:'AI 自動評分，17 分鐘完成',attrs:{'時間':'17 分鐘/人','報告速度':'即時','準確度':'GSE/CEFR 標準化','規模':'無限制','成本':'中等'},pros:'AI 客觀評分，全球 100+ 國通用的 CEFR 標準，可大規模部署，適合跨國統一測評需求'},
+  toeic_sim: {name:'多益模擬測驗',sub:'精英文化自建平台，TOEIC 對標',attrs:{'時間':'約 30 分鐘/人','報告速度':'即時','準確度':'對標多益分數','規模':'無限制','成本':'低'},pros:'台灣企業最熟悉的評量語言，適合快速盤點大量同仁的聽讀能力'},
+  consultant:{name:'外師一對一深度評估',sub:'由外籍顧問進行個別訪談',attrs:{'時間':'30–60 分鐘/人','報告速度':'1–2 週','準確度':'質性 + 情境判斷','規模':'5–30 人','成本':'高'},pros:'能評估臨場應變、溝通風格與文化適應性，適合外派主管遴選或關鍵職缺'}
 };
 function scoreM(k){
-  var p=answers.purpose,s=answers.size,sp=answers.speed,b=answers.budget,sc=0;
-  if(k==='versant'){if(['hire','ldbase','ldpost'].indexOf(p)>-1)sc+=3;if(['large','xlarge'].indexOf(s)>-1)sc+=2;if(sp==='fast')sc+=2;if(b!=='low')sc+=1;}
-  if(k==='toeic_sim'){if(p==='ldbase')sc+=3;if(['large','xlarge'].indexOf(s)>-1)sc+=2;if(b==='low')sc+=2;}
-  if(k==='voxy'){if(['ldbase','ldpost'].indexOf(p)>-1)sc+=3;if(['mid','large'].indexOf(s)>-1)sc+=2;if(b!=='low')sc+=1;}
-  if(k==='consultant'){if(['promo','hire'].indexOf(p)>-1)sc+=3;if(s==='small')sc+=2;if(sp==='deep')sc+=2;if(b==='high')sc+=2;}
-  if(k==='kongying'){if(p==='ldbase')sc+=2;if(['large','xlarge'].indexOf(s)>-1)sc+=2;if(b==='low')sc+=3;}
+  var p=answers.purpose,s=answers.size,sp=answers.speed,b=answers.budget;
+  var spk=answers.speaking_focus, glb=answers.global;
+  var sc=0;
+  if(k==='pearson'){
+    if(['hire','expat','ldbase','ldpost','promo'].indexOf(p)>-1)sc+=3;
+    if(spk==='yes')sc+=4;
+    if(glb==='yes')sc+=4;
+    if(['large','xlarge'].indexOf(s)>-1)sc+=2;
+    if(sp==='fast')sc+=2;
+    if(b!=='low')sc+=1;
+  }
+  if(k==='toeic_sim'){
+    if(['hire','ldbase','ldpost'].indexOf(p)>-1)sc+=3;
+    if(spk==='no')sc+=5;
+    if(glb==='no')sc+=2;
+    if(['large','xlarge'].indexOf(s)>-1)sc+=2;
+    if(b==='low')sc+=3;
+  }
+  if(k==='consultant'){
+    if(['promo','expat'].indexOf(p)>-1)sc+=5;
+    if(spk==='yes')sc+=2;
+    if(s==='small')sc+=3;
+    if(sp==='deep')sc+=3;
+    if(b==='high')sc+=2;
+  }
   return sc;
 }
 function renderFinder(){
