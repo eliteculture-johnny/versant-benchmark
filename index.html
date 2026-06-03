@@ -38,6 +38,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;
   text-align:left;width:100%;line-height:1.4;transition:all .18s;}
 .sn-btn:hover{background:var(--bg2);color:var(--txt);}
+.sn-section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);padding:4px 12px 2px;}
 .sn-btn.active{background:var(--brand-light);color:var(--brand);
   border-right:2px solid var(--brand-mid);border-radius:var(--rmd) 0 0 var(--rmd);}
 .content{flex:1;min-width:0;}
@@ -48,7 +49,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .stab{flex:1;padding:9px 6px;border:none;background:transparent;border-radius:var(--rmd);
   font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;text-align:center;transition:all .2s;}
 .stab.active{background:var(--bg);color:var(--txt);border:.5px solid var(--bdr2);box-shadow:0 1px 3px rgba(0,0,0,.06);}
-.spanel{display:none;}.spanel.active{display:block;}
 
 /* INSIGHT SUB NAV */
 .isubnav{display:flex;flex-direction:column;gap:3px;margin-bottom:1.5rem;
@@ -123,6 +123,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .attr-pill .v{font-size:13px;color:var(--txt);font-weight:600;}
 .restart-btn{width:100%;margin-top:1rem;padding:10px;background:var(--bg2);
   border:.5px solid var(--bdr2);border-radius:var(--rmd);font-size:14px;color:var(--txt);cursor:pointer;}
+.back-btn{background:none;border:none;font-size:12px;color:var(--txt2);cursor:pointer;padding:0;text-decoration:underline;}
 
 /* CALLOUTS */
 .callout{padding:.875rem 1rem;font-size:13px;line-height:1.65;margin-top:8px;}
@@ -162,14 +163,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 
 /* CTA */
 .cta-block{background:var(--brand-light);border:.5px solid #B5D4F4;
-  border-radius:var(--rlg);padding:1.5rem;margin-top:1.5rem;text-align:center;}
-.cta-title{font-size:17px;font-weight:700;color:var(--brand);margin-bottom:.5rem;}
-.cta-sub{font-size:14px;color:#185FA5;margin-bottom:1rem;}
-.cta-btn{display:inline-block;background:var(--brand);color:#fff;
-  padding:12px 28px;border-radius:var(--rmd);font-size:15px;font-weight:600;
-  text-decoration:none;border:none;cursor:pointer;transition:opacity .15s;}
-.cta-btn:hover{opacity:.85;}
-.cta-note{font-size:12px;color:var(--txt2);margin-top:8px;}
+  border-radius:var(--rlg);padding:1.5rem;margin-top:1.5rem;}
+.cta-title{font-size:16px;font-weight:700;color:var(--brand);margin-bottom:.4rem;}
+.cta-sub{font-size:13px;color:#185FA5;margin-bottom:1rem;}
+.cta-contact{display:flex;flex-direction:column;gap:8px;margin-top:.75rem;}
+.cta-contact-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--brand);}
+.cta-contact-row a{color:var(--brand);text-decoration:none;font-weight:600;}
+.cta-contact-row a:hover{text-decoration:underline;}
+.cta-note{font-size:12px;color:var(--txt2);margin-top:.75rem;padding-top:.75rem;border-top:.5px solid #B5D4F4;}
 .src-note{font-size:11px;color:var(--txt3);margin-top:1rem;font-style:italic;}
 .ref-section{margin-top:1.5rem;padding-top:1.25rem;border-top:.5px solid var(--bdr);}
 .ref-label{font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase;}
@@ -196,20 +197,18 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 
 <div class="layout">
   <nav class="sidenav">
-    <button class="sn-btn active" onclick="switchMain('benchmark')" data-m="benchmark">📊 企業英文口說力健檢</button>
-    <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球人力市場洞察</button>
+    <div class="sn-section-label">工具</div>
+    <button class="sn-btn active" onclick="switchMain('benchmark')" data-m="benchmark">📊 口說力對標</button>
+    <button class="sn-btn" onclick="switchMain('finder')" data-m="finder">📋 測評方法推薦</button>
+    <div class="sn-section-label" style="margin-top:12px;">參考資料</div>
+    <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球市場洞察</button>
   </nav>
 
   <div class="content">
 
     <!-- PANEL 1: BENCHMARK -->
     <div id="mpanel-benchmark" class="mpanel active">
-      <div class="sub-tabs">
-        <button class="stab active" onclick="switchSub('compare')">🔎 口說力對標</button>
-        <button class="stab" onclick="switchSub('finder')">📋 測評方法推薦</button>
-      </div>
-
-      <div id="spanel-compare" class="spanel active">
+        <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">想知道貴公司同仁的英語口說水準，跟全球同產業職場人士相比落在哪裡嗎？<br>請依序選擇<strong>產業別</strong>與同仁的<strong>平均口說程度</strong>，即可看到對標結果。<br>左側「全球市場洞察」有更多 Pearson 全球數據可供參考。</p>
         <div class="sel-wrap">
           <div class="field-label">貴公司產業</div>
           <select id="sel-industry" onchange="updateChart()">
@@ -262,9 +261,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
       </div>
 
-      <div id="spanel-finder" class="spanel">
-        <div id="finder-content"></div>
-      </div>
+
+    <!-- PANEL: FINDER -->
+    <div id="mpanel-finder" class="mpanel">
+      <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">回答幾個問題，讓我們協助您評估什麼樣的測驗最適合貴公司。</p>
+      <div id="finder-content"></div>
     </div>
 
     <!-- PANEL 2: INSIGHTS -->
@@ -321,11 +322,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
         </div>
         <div class="cta-block">
-          <div class="cta-title">了解 Pearson 口說測驗如何補足 TOEIC 的盲點</div>
-          <div class="cta-sub">17 分鐘口說測驗，精準評估 TOEIC 測不到的真實溝通能力</div>
-          <a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">了解 Pearson 口說測驗 →</a>
+          <div class="cta-title">有任何問題或想進一步了解？</div>
+          <div class="cta-sub">歡迎直接與精英文化顧問聯繫</div>
+          <div class="cta-contact">
+            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+          </div>
+          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
-      </div>
 
       <div id="ipanel-ai" class="ipanel">
         <div class="stat-grid">
@@ -341,11 +345,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
         <div class="src-note">Sources: World Economic Forum, Financial Times, G-P Global Growth Report, Pearson</div>
         <div class="cta-block">
-          <div class="cta-title">準備好迎接 AI 時代的英語挑戰？</div>
-          <div class="cta-sub">了解精英文化如何協助台灣科技業系統性提升英語溝通能力</div>
-          <a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">預約免費諮詢 →</a>
+          <div class="cta-title">有任何問題或想進一步了解？</div>
+          <div class="cta-sub">歡迎直接與精英文化顧問聯繫</div>
+          <div class="cta-contact">
+            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+          </div>
+          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
-      </div>
 
       <div id="ipanel-retain" class="ipanel">
         <p style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
@@ -362,11 +369,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
         <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
         <div class="cta-block">
-          <div class="cta-title">讓語言培訓成為你的留才利器</div>
-          <div class="cta-sub">精英文化提供從評估到培訓的一站式解決方案</div>
-          <a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">預約免費諮詢 →</a>
+          <div class="cta-title">有任何問題或想進一步了解？</div>
+          <div class="cta-sub">歡迎直接與精英文化顧問聯繫</div>
+          <div class="cta-contact">
+            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+          </div>
+          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
-      </div>
     </div>
 
   </div>
@@ -392,13 +402,7 @@ function switchMain(m){
   document.querySelectorAll('.sn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
   document.querySelectorAll('.mpanel').forEach(function(p){p.classList.remove('active');});
   document.getElementById('mpanel-'+m).classList.add('active');
-}
-
-function switchSub(s){
-  document.querySelectorAll('.stab').forEach(function(t,i){t.classList.toggle('active',['compare','finder'][i]===s);});
-  document.querySelectorAll('.spanel').forEach(function(p){p.classList.remove('active');});
-  document.getElementById('spanel-'+s).classList.add('active');
-  if(s==='finder') renderFinder();
+  if(m==='finder' && Object.keys(answers).length===0) renderFinder();
 }
 
 function switchI(tab){
@@ -530,14 +534,16 @@ function renderFinder(){
   if(Object.keys(answers).length>=QS.length){renderResult();return;}
   var q=QS[qIdx];
   var pct=Math.round(qIdx/QS.length*100);
+  var backBtn=qIdx>0?'<button class="back-btn" onclick="goBack()">← 上一題</button>':'';
   document.getElementById('finder-content').innerHTML=
     '<div class="prog-wrap"><div class="prog-track"><div class="prog-fill" style="width:'+pct+'%"></div></div>'
-    +'<div class="prog-lbl">問題 '+(qIdx+1)+' / '+QS.length+'</div></div>'
+    +'<div class="prog-lbl" style="display:flex;justify-content:space-between;align-items:center;"><span>問題 '+(qIdx+1)+' / '+QS.length+'</span>'+backBtn+'</div></div>'
     +'<div class="card"><div class="q-text">'+q.text+'</div><div class="opts">'
     +q.opts.map(function(o){return '<button class="opt-btn" onclick="ansQ(\''+q.id+'\',\''+o.val+'\')">'+o.label+'</button>';}).join('')
     +'</div></div>';
 }
 function ansQ(id,val){answers[id]=val;qIdx++;if(qIdx>=QS.length)renderResult();else renderFinder();}
+function goBack(){if(qIdx<=0)return;qIdx--;delete answers[QS[qIdx].id];renderFinder();}
 function renderResult(){
   var scored=Object.keys(METHODS).map(function(k){return Object.assign({key:k,score:scoreM(k)},METHODS[k]);}).sort(function(a,b){return b.score-a.score;});
   var cards=scored.slice(0,3).map(function(m,i){
@@ -551,10 +557,7 @@ function renderResult(){
     '<div style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">根據您的需求，以下是最適合貴公司的評估方案：</div>'
     +'<div class="res-grid">'+cards+'</div>'
     +'<button class="restart-btn" onclick="resetF()">↺ 重新評估</button>'
-    +'<div class="cta-block"><div class="cta-title">想要更精準的方案建議？</div>'
-    +'<div class="cta-sub">精英文化顧問可依產業 / 職能 / 人數免費規劃評估方案</div>'
-    +'<a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">預約免費諮詢 →</a>'
-    +'<div class="cta-note">精英文化顧問將在 1 個工作天內與您聯繫</div></div>';
+    +'<div class="cta-block"><div class="cta-title">有任何問題或想進一步了解？</div><div class="cta-sub">歡迎直接與精英文化顧問聯繫</div><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
 }
 function resetF(){answers={};qIdx=0;renderFinder();}
 
