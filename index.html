@@ -330,6 +330,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
+      </div>
 
       <div id="ipanel-ai" class="ipanel">
         <div class="stat-grid">
@@ -353,6 +354,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
+      </div>
 
       <div id="ipanel-retain" class="ipanel">
         <p style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
@@ -377,6 +379,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
+      </div>
     </div>
 
   </div>
@@ -402,7 +405,7 @@ function switchMain(m){
   document.querySelectorAll('.sn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
   document.querySelectorAll('.mpanel').forEach(function(p){p.classList.remove('active');});
   document.getElementById('mpanel-'+m).classList.add('active');
-  if(m==='finder' && Object.keys(answers).length===0) renderFinder();
+  if(m==='finder') renderFinder();
 }
 
 function switchI(tab){
@@ -503,43 +506,49 @@ var METHODS={
   consultant:{name:'外師一對一深度評估',sub:'由外籍顧問進行個別訪談',attrs:{'時間':'30–60 分鐘/人','報告速度':'1–2 週','準確度':'質性 + 情境判斷','規模':'5–30 人','成本':'高'},pros:'能評估臨場應變、溝通風格與文化適應性，適合外派主管遴選或關鍵職缺'}
 };
 function scoreM(k){
-  var p=answers.purpose,s=answers.size,sp=answers.speed,b=answers.budget;
+  var p=answers.purpose, s=answers.size, sp=answers.speed, b=answers.budget;
   var spk=answers.speaking_focus, glb=answers.global;
   var sc=0;
+
   if(k==='pearson'){
-    if(['hire','expat','ldbase','ldpost','promo'].indexOf(p)>-1)sc+=3;
-    if(spk==='yes')sc+=4;
-    if(glb==='yes')sc+=4;
-    if(['large','xlarge'].indexOf(s)>-1)sc+=2;
-    if(sp==='fast')sc+=2;
-    if(b!=='low')sc+=1;
+    if(spk==='yes') sc+=5;          // 口說導向 → 核心優勢
+    if(glb==='yes') sc+=5;          // 需要全球統一 → GSE/CEFR 唯一選擇
+    if(['hire','expat','ldbase','ldpost','promo'].indexOf(p)>-1) sc+=2;
+    if(sp==='fast') sc+=2;          // 即時出分
+    if(['large','xlarge'].indexOf(s)>-1) sc+=1;
   }
+
   if(k==='toeic_sim'){
-    if(['hire','ldbase','ldpost'].indexOf(p)>-1)sc+=3;
-    if(spk==='no')sc+=5;
-    if(glb==='no')sc+=2;
-    if(['large','xlarge'].indexOf(s)>-1)sc+=2;
-    if(b==='low')sc+=3;
+    if(spk==='no')  sc+=5;          // 非口說 → 多益首選
+    if(glb==='no')  sc+=3;          // 只在台灣用 → 多益認可度高
+    if(b==='low')   sc+=3;          // 預算有限
+    if(['large','xlarge'].indexOf(s)>-1) sc+=2;
+    if(['ldbase','ldpost'].indexOf(p)>-1) sc+=2;
+    if(glb==='yes') sc-=4;          // 海外認可度低，扣分
   }
+
   if(k==='consultant'){
-    if(['promo','expat'].indexOf(p)>-1)sc+=5;
-    if(spk==='yes')sc+=2;
-    if(s==='small')sc+=3;
-    if(sp==='deep')sc+=3;
-    if(b==='high')sc+=2;
+    if(glb==='yes') return -99;     // 無法跨國統一執行，直接排除
+    if(b==='high')  sc+=4;          // 價格不敏感
+    if(sp==='deep') sc+=4;          // 不趕時間
+    if(s==='small') sc+=3;          // 人數少
+    if(glb==='no')  sc+=3;          // 台灣本地
+    if(spk==='yes') sc+=2;          // 口說情境
+    if(['promo','expat'].indexOf(p)>-1) sc+=4;  // 主管遴選、外派
   }
+
   return sc;
 }
 function renderFinder(){
   if(Object.keys(answers).length>=QS.length){renderResult();return;}
   var q=QS[qIdx];
   var pct=Math.round(qIdx/QS.length*100);
-  var backBtn=qIdx>0?'<button class="back-btn" onclick="goBack()">← 上一題</button>':'';
+  var backBtn=qIdx>0?'<button class="back-btn" onclick="goBack()">&#8592; 上一題</button>':'';
   document.getElementById('finder-content').innerHTML=
     '<div class="prog-wrap"><div class="prog-track"><div class="prog-fill" style="width:'+pct+'%"></div></div>'
     +'<div class="prog-lbl" style="display:flex;justify-content:space-between;align-items:center;"><span>問題 '+(qIdx+1)+' / '+QS.length+'</span>'+backBtn+'</div></div>'
     +'<div class="card"><div class="q-text">'+q.text+'</div><div class="opts">'
-    +q.opts.map(function(o){return '<button class="opt-btn" onclick="ansQ(\''+q.id+'\',\''+o.val+'\')">'+o.label+'</button>';}).join('')
+    +q.opts.map(function(o){return '<button class="opt-btn" onclick="ansQ(\x27'+q.id+'\x27,\x27'+o.val+'\x27)">'+o.label+'</button>';}).join('')
     +'</div></div>';
 }
 function ansQ(id,val){answers[id]=val;qIdx++;if(qIdx>=QS.length)renderResult();else renderFinder();}
@@ -554,11 +563,12 @@ function renderResult(){
       +'<div style="font-size:12px;color:var(--txt2);margin-top:10px;">'+m.pros+'</div></div>';
   }).join('');
   document.getElementById('finder-content').innerHTML=
-    '<div style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">根據您的需求，以下是最適合貴公司的評估方案：</div>'
+    '<div style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">根據您的需求，以下是最適合貴公司的測評方案：</div>'
     +'<div class="res-grid">'+cards+'</div>'
-    +'<button class="restart-btn" onclick="resetF()">↺ 重新評估</button>'
+    +'<button class="restart-btn" onclick="resetF()">&#8634; 重新評估</button>'
     +'<div class="cta-block"><div class="cta-title">有任何問題或想進一步了解？</div><div class="cta-sub">歡迎直接與精英文化顧問聯繫</div><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
 }
+
 function resetF(){answers={};qIdx=0;renderFinder();}
 
 // ── PEOPLE DOTS ──
