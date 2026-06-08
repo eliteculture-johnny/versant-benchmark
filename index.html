@@ -450,13 +450,13 @@ function updateChart(){
     document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
     if(dg>=1){
-      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說已達全球競爭水準。';
+      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
     } else if(dg===0){
-      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球水準。';
+      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
     } else if(dg>=-8){
-      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說尚未達到全球水準。';
+      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說尚未達到全球職場英語平均水準。';
     } else {
-      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球水準。';
+      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球職場英語平均水準。';
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
