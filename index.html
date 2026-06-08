@@ -20,19 +20,20 @@
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;
-  padding:24px 20px 48px;max-width:1080px;margin:0 auto;}
+  padding:48px 20px 48px;max-width:1080px;margin:0 auto;}
 
 /* HERO */
-.hero{text-align:center;margin-bottom:2rem;padding-left:196px;}
+.hero{margin-bottom:2rem;}
 .hero-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin-bottom:.4rem;}
 .hero-title{font-size:26px;font-weight:700;color:var(--brand);line-height:1.3;margin-bottom:.4rem;}
 .hero-sub{font-size:14px;color:var(--txt2);}
 
 /* MAIN LAYOUT */
 .layout{display:flex;align-items:flex-start;}
-.sidenav{width:168px;flex-shrink:0;position:sticky;top:16px;
+.sidenav{width:160px;flex-shrink:0;position:sticky;top:24px;
   display:flex;flex-direction:column;gap:3px;
   padding-right:16px;border-right:.5px solid var(--bdr);margin-right:28px;}
+.right-col{flex:1;min-width:0;display:flex;flex-direction:column;}
 .sn-btn{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;
   border:none;background:transparent;border-radius:var(--rmd);
   font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;
@@ -41,7 +42,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 .sn-section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);padding:4px 12px 2px;}
 .sn-btn.active{background:var(--brand-light);color:var(--brand);
   border-right:2px solid var(--brand-mid);border-radius:var(--rmd) 0 0 var(--rmd);}
-.content{flex:1;min-width:0;}
+.right-col{flex:1;min-width:0;}
 .mpanel{display:none;}.mpanel.active{display:block;}
 
 /* SUB TABS */
@@ -189,12 +190,6 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-eyebrow">精英文化 × Pearson 全球數據</div>
-  <div class="hero-title">企業英文能力健檢</div>
-  <div class="hero-sub">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
-</div>
-
 <div class="layout">
   <nav class="sidenav">
     <div class="sn-section-label">工具</div>
@@ -204,7 +199,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
     <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球市場洞察</button>
   </nav>
 
-  <div class="content">
+  <div class="right-col">
+    <div style="margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:.5px solid var(--bdr);">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:.4rem;">精英文化 × Pearson 全球數據</div>
+      <div style="font-size:28px;font-weight:700;color:var(--brand);line-height:1.2;margin-bottom:.4rem;">企業英文能力健檢</div>
+      <div style="font-size:14px;color:var(--txt2);">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
+    </div>
 
     <!-- PANEL 1: BENCHMARK -->
     <div id="mpanel-benchmark" class="mpanel active">
@@ -254,10 +254,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         <div id="insight-area" style="display:none;"></div>
 
         <div class="cta-block" id="benchmark-cta" style="display:none;">
-          <div class="cta-title">想知道團隊真實分布？</div>
-          <div class="cta-sub">Pearson 口說測驗 17 分鐘完成，即時取得 GSE / CEFR 個人報告</div>
-          <a class="cta-btn" href="https://www.myelearning.com.tw/products_view.php?id=22" target="_blank">預約免費諮詢 →</a>
-          <div class="cta-note">精英文化顧問將在 1 個工作天內與您聯繫</div>
+          <div class="cta-title">有任何問題或想進一步了解？</div>
+          <div class="cta-sub">歡迎直接與精英文化顧問聯繫</div>
+          <div class="cta-contact">
+            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+          </div>
+          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
 
@@ -340,7 +343,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
         <div class="two-col">
           <div class="info-card"><div class="info-icon">🌐</div><div class="info-title">海外擴張帶動英語需求</div><div class="info-body">73% 的 C-suite 主管認為國際擴張是 2024 最重要成長策略（G-P 全球報告）。跨境業務增加，英語口說能力的需求也隨之提高。</div></div>
-          <div class="info-card"><div class="info-icon">📈</div><div class="info-title">英語測驗量創 8 年新高</div><div class="info-body">全球外文測驗量連年創新高，科技與 BPO 成長最快，企業對英語能力的要求持續上升。</div></div>
+          <div class="info-card"><div class="info-icon">📈</div><div class="info-title">英語測驗量創 8 年新高</div><div class="info-body">2023 年全球測驗量達歷史新高，科技與 BPO 成長最快，企業對英語能力的要求持續上升。</div></div>
           <div class="info-card"><div class="info-icon">🌏</div><div class="info-title">亞太各市場差距正在拉開</div><div class="info-body">印度科技業口說 GSE 59、菲律賓 GSE 66，亞太平均僅 44。掌握自身程度，是制定有效策略的第一步。</div></div>
           <div class="info-card"><div class="info-icon">💬</div><div class="info-title">英語是 AI 時代的核心能力</div><div class="info-body">與 AI 系統有效互動需要精準的語言表達。英語不只用於對外溝通，更直接影響 AI 工具的使用效率。</div></div>
         </div>
@@ -447,13 +450,13 @@ function updateChart(){
     document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
     if(dg>=1){
-      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）！</strong>您的團隊英文口說已達全球競爭水準。下一步可設定更高招募門檻，或規劃針對性的外文培訓計畫，持續強化團隊競爭力。';
+      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說已達全球競爭水準。';
     } else if(dg===0){
-      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>表現已達國際水準，建議鎖定高頻使用英文的職能進一步強化，拉開與競爭對手的差距。';
+      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球水準。';
     } else if(dg>=-8){
-      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>與全球競爭者有落差，建議優先強化主管與對外溝通職能的口說能力。';
+      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說尚未達到全球水準。';
     } else {
-      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>這可能在跨國溝通、與外商往來上造成明顯障礙。建議優先進行全面盤點，再依職能分級設計培訓路徑。';
+      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球水準。';
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
