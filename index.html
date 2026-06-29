@@ -24,7 +24,7 @@
 html{background:var(--bg);}
 body{font-family:'Noto Sans TC','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;
-  padding:0;margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  padding:0 0 56px;margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 .page-container{max-width:1080px;margin:0 auto;padding:28px 20px 0;}
 /* TOPBAR */
 .topbar{position:sticky;top:0;z-index:1000;
@@ -36,17 +36,24 @@ body{font-family:'Noto Sans TC','Inter',-apple-system,BlinkMacSystemFont,'Segoe 
 .topbar-name-sub{font-weight:400;color:rgba(255,255,255,.55);margin-left:5px;font-size:11px;text-transform:none;}
 @media(max-width:680px){
   .topbar-inner{padding:8px 14px;justify-content:center;gap:8px;}
+  .footer-inner{justify-content:center;padding:8px 14px;}
+  .footer-left{justify-content:center;width:100%;gap:10px;}
+  .footer-contact{justify-content:center;gap:10px;}
+  .footer-contact a{font-size:11px;}
+  .footer-copy{display:none;}
+  body{padding-bottom:64px;}
 }
 /* FOOTER */
-.site-footer{background:#082E50;margin-top:2.5rem;}
-.footer-inner{max-width:1080px;margin:0 auto;padding:1.75rem 20px;
-  display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;}
-.footer-brand{font-size:14px;font-weight:700;color:#fff;}
-.footer-brand span{font-weight:400;color:rgba(255,255,255,.55);margin-left:6px;font-size:12px;}
-.footer-contact{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;}
-.footer-contact a{font-size:13px;color:rgba(255,255,255,.85);text-decoration:none;transition:color .15s;}
+.site-footer{position:fixed;left:0;right:0;bottom:0;z-index:1000;
+  background:#0A3D6B;border-top:2px solid var(--orange);}
+.footer-inner{max-width:1080px;margin:0 auto;padding:9px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.footer-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.footer-brand{font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
+.footer-contact{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.footer-contact a{font-size:12.5px;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .15s;}
 .footer-contact a:hover{color:#FFB877;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;}
+.footer-copy{font-size:10.5px;color:rgba(255,255,255,.4);white-space:nowrap;}
 /* HERO */
 .hero{margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--bdr);}
 .hero-eyebrow{margin-bottom:.7rem;}
@@ -220,6 +227,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 </style>
 </head>
 <body>
+<!-- 瀏覽次數計數器：每次有人打開這個頁面就會 +1，不需要任何帳號設定。
+     隨時想查目前累積次數，直接在瀏覽器開啟下面這個網址即可看到數字：
+     https://visitor-badge.laobi.icu/badge?page_id=myelearning.qiyingwenhua.benchmark2026 -->
+<img src="https://visitor-badge.laobi.icu/badge?page_id=myelearning.qiyingwenhua.benchmark2026" alt="" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" />
 <div class="topbar">
   <div class="topbar-inner">
     <div class="topbar-brand">
@@ -421,11 +432,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 </div><!-- /page-container -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">精英文化</div>
-    <div class="footer-contact">
-      <a href="tel:0227030078">📞 02-2703-0078</a>
-      <a href="mailto:cs@myelearning.com.tw">✉️ cs@myelearning.com.tw</a>
-      <a href="https://www.myelearning.com.tw/" target="_blank">🌐 www.myelearning.com.tw</a>
+    <div class="footer-left">
+      <span class="footer-brand">精英文化</span>
+      <div class="footer-contact">
+        <a href="tel:0227030078">📞 02-2703-0078</a>
+        <a href="mailto:cs@myelearning.com.tw">✉️ cs@myelearning.com.tw</a>
+        <a href="https://www.myelearning.com.tw/" target="_blank">🌐 www.myelearning.com.tw</a>
+      </div>
     </div>
     <div class="footer-copy">© 2026 精英文化事業股份有限公司・內容數據來源：Global English Proficiency Report, Pearson</div>
   </div>
