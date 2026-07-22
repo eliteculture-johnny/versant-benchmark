@@ -233,7 +233,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 .topbar .tc a{color:var(--navy-70);text-decoration:none;display:flex;align-items:center;gap:6px;}
 .topbar .tc a:hover{color:var(--gold);}
 /* SITE FOOTER */
-.site-footer{margin-top:48px;background:var(--navy);padding:2rem 2.5rem;}
+.site-footer{position:sticky;bottom:0;z-index:5;margin-top:48px;background:var(--navy);padding:1.75rem 2.5rem;}
 .footer-inner{display:flex;justify-content:space-between;gap:20px 48px;flex-wrap:wrap;align-items:flex-start;}
 .footer-left{flex:1 1 320px;min-width:280px;max-width:560px;}
 .site-footer .f-brand{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
@@ -328,16 +328,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
           </div>
         </div>
         <div id="insight-area" style="display:none;"></div>
-        <div class="cta-block" id="benchmark-cta" style="display:none;">
-          <div class="cta-title">想進一步了解貴公司的口說基準</div>
-          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-          <div class="cta-contact">
-            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-          </div>
-          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-        </div>
       </div>
     <!-- PANEL: FINDER -->
     <div id="mpanel-finder" class="mpanel">
@@ -411,16 +401,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
             <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
           </div>
         </div>
-        <div class="cta-block">
-          <div class="cta-title">想進一步了解這些數據對貴公司的意義</div>
-          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-          <div class="cta-contact">
-            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-          </div>
-          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-        </div>
       </div>
       <div id="ipanel-ai" class="ipanel">
         <div class="stat-grid">
@@ -435,16 +415,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
           <div class="info-card"><div class="info-icon">💬</div><div class="info-title">英語是 AI 時代的核心能力</div><div class="info-body">與 AI 系統有效互動需要精準的語言表達。英語不只用於對外溝通，更直接影響 AI 工具的使用效率。</div></div>
         </div>
         <div class="src-note">Sources: World Economic Forum, Financial Times, G-P Global Growth Report, Pearson</div>
-        <div class="cta-block">
-          <div class="cta-title">想進一步了解 AI 時代的英語能力盤點</div>
-          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-          <div class="cta-contact">
-            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-          </div>
-          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-        </div>
       </div>
       <div id="ipanel-retain" class="ipanel">
         <p style="font-size:15px;color:var(--navy-70);margin-bottom:1.5rem;line-height:1.9;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
@@ -459,16 +429,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
           <div class="info-card"><div class="info-icon">🌏</div><div class="info-title">海外擴張讓語言能力的重要性從隱性變顯性</div><div class="info-body">進軍東南亞、日本或歐美市場的台灣企業，往往在第一線才發現語言是最大的摩擦點。定期評估讓 HR 能提前掌握團隊的準備程度。</div></div>
         </div>
         <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
-        <div class="cta-block">
-          <div class="cta-title">想把學習資源，變成留才的理由</div>
-          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-          <div class="cta-contact">
-            <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-            <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-          </div>
-          <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-        </div>
       </div>
     </div>
     <!-- PANEL: CASE STUDY -->
@@ -563,16 +523,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
       </div>
       </div><!-- end cpanel-finance -->
 
-      <div class="cta-block">
-        <div class="cta-title">想在短時間內掌握大量求職者的口說實力</div>
-        <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-        <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-        <div class="cta-contact">
-          <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-          <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-        </div>
-        <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-      </div>
     </div>
     <!-- PANEL: SCIENCE / CONVERSION -->
     <div id="mpanel-science" class="mpanel">
@@ -608,16 +558,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <div class="callout orange" style="margin-top:1.5rem;"><strong>重要提醒：對照的是「量表刻度」，不是「同一個人的兩科成績」。</strong>口說是主動產出，比聽讀理解更難，因此同一個人的口說能力，往往比聽讀低一個 CEFR 等級以上——在亞太地區，超過 7 成的人都是如此。若只憑多益聽讀成績推估，容易高估同仁在會議、簡報、客戶溝通上的實際口語表現；建議把 Versant 口說成績當作獨立、更貼近真實溝通場景的參考。<br><span style="font-size:12px;color:var(--grey);margin-top:8px;display:inline-block;">Source: Global English Proficiency Report, Pearson</span></div>
       </div>
 
-      <div class="cta-block">
-        <div class="cta-title">想確認貴公司同仁的口說，和多益成績差多少</div>
-        <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
-        <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
-        <div class="cta-contact">
-          <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-          <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-        </div>
-        <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
-      </div>
     </div>
   </div>
 </div>
@@ -690,7 +630,6 @@ function updateChart(){
     var cefrLabel = sel.options[sel.selectedIndex].text.split('　')[0].trim();
     document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#0e2233') + makeRow('貴公司（'+cefrLabel+'）',user,'#b8934a');
     document.getElementById('insight-area').style.display = 'block';
-    document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
     if(dg>=10){
       cls='great'; msg='<strong>▲ 貴公司大幅領先全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>這樣的口說水準在國際場合具備明顯優勢，很適合承接跨國會議、對外簡報與海外業務等高溝通強度的任務。';
@@ -711,7 +650,6 @@ function updateChart(){
   } else {
     document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#0e2233');
     document.getElementById('insight-area').style.display = 'none';
-    document.getElementById('benchmark-cta').style.display = 'none';
   }
 }
 // ── FINDER ──
@@ -810,8 +748,7 @@ function renderResult(){
   document.getElementById('finder-content').innerHTML=
     '<div style="font-size:14px;color:var(--navy-70);margin-bottom:1.25rem;">根據您的需求，以下是最適合貴公司的評測方案：</div>'
     +'<div class="res-grid">'+cards+'</div>'
-    +'<button class="restart-btn" onclick="resetF()">&#8634; 重新評估</button>'
-    +'<div class="cta-block"><div class="cta-title">想確認哪一套方案最適合貴公司</div><div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div><a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
+    +'<button class="restart-btn" onclick="resetF()">&#8634; 重新評估</button>';
 }
 function resetF(){answers={};qIdx=0;renderFinder();}
 // ── PEOPLE DOTS ──
