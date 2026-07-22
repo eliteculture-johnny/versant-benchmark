@@ -347,7 +347,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看的四個面向</div>
         <div class="case-list">
           <div class="cl"><h5>用途契合度</h5><p>需求不同，看重的點就不同：<br><span style="color:var(--gold);">·</span> 短時間內施測數百人（如 MA 專案）——速度最重要<br><span style="color:var(--gold);">·</span> 針對極少數高階主管、不趕時間——嚴謹度最重要<br><span style="color:var(--gold);">·</span> 納入長期招募政策、常態使用——穩定度與方便性最重要</p></div>
-          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解，還是主動口說？溝通對象是目標一致的自己人，還是有利害關係的上下游廠商與客戶？先釐清這些，再決定要衡量的能力。</p></div>
+          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解，還是主動口說？溝通對象是目標一致的自己人，還是有利害關係的上下游廠商與客戶？</p></div>
           <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR），讓台灣與海外據點、不同批次，都能用同一把尺一致比較。</p></div>
           <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，評測必須能在全球施測，才能讓各地據點使用同一把尺——這也是台灣企業最大的商機所在。</p></div>
         </div>
@@ -693,19 +693,19 @@ function updateChart(){
     document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
     if(dg>=10){
-      cls='great'; msg='<strong>🎉 貴公司大幅領先全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說遠高於全球職場英語平均水準，具備強勁的國際競爭力。';
+      cls='great'; msg='<strong>▲ 貴公司大幅領先全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>這樣的口說水準在國際場合具備明顯優勢，很適合承接跨國會議、對外簡報與海外業務等高溝通強度的任務。';
     } else if(dg>=4){
-      cls='great'; msg='<strong>🎉 貴公司明顯高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說優於全球職場英語平均水準。';
+      cls='great'; msg='<strong>▲ 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>團隊口說已優於全球水準，面對國際客戶與跨國協作大多能從容應對，關鍵職位可再往上加強。';
     } else if(dg>=1){
-      cls='good'; msg='<strong>👍 貴公司略高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說達到並略微超越全球職場英語平均水準。';
+      cls='good'; msg='<strong>▲ 貴公司略高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>日常的國際溝通已有一定基礎；若希望在會議、談判等場合更具優勢，仍有加分空間。';
     } else if(dg===0){
-      cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
+      cls='middle'; msg='<strong>● 貴公司與全球平均持平（'+cefr(user)+'）。</strong>團隊口說與全球水準相當，能應付基本的國際溝通；想在關鍵場合更有把握，還可以再往上一階。';
     } else if(dg>=-3){
-      cls='behind'; msg='<strong>貴公司略低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>其實已經很接近全球職場英語水準，只要在口說上再補強一些，就能順利跨過這條線。';
+      cls='behind'; msg='<strong>▼ 貴公司略低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>距離全球水準只差一小段，先鎖定較常用到英語口說的職務優先補強，很快就能跟上。';
     } else if(dg>=-8){
-      cls='behind'; msg='<strong>貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>口說是團隊很值得投入的一塊，只要有計畫地培養，就能逐步拉近與全球水準的距離。';
+      cls='behind'; msg='<strong>▼ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>與全球水準還有一段距離，建議先盤點各職務的實際需求，把資源集中在最需要口說的團隊上。';
     } else {
-      cls='critical'; msg='<strong>貴公司目前與全球平均相差 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>這也代表口說是最有提升空間的地方，及早盤點、有計畫地培養，就能一步步補上這段差距。';
+      cls='critical'; msg='<strong>▼ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>口說是目前較明顯的缺口，也是投入後最容易看到成效的地方；可以從關鍵職務開始，逐步把口說能力建立起來。';
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
