@@ -24,7 +24,7 @@
 }
 body{font-family:'Noto Sans TC','Microsoft JhengHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   background:var(--bg);color:var(--ink);font-size:16.5px;line-height:1.9;
-  padding:56px 24px 72px;max-width:1080px;margin:0 auto;}
+  padding:56px 24px 24px;max-width:1080px;margin:0 auto;}
 /* MAIN LAYOUT */
 .layout{display:flex;align-items:flex-start;}
 .sidenav{width:170px;flex-shrink:0;position:sticky;top:28px;
@@ -246,7 +246,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 .site-footer .f-item a:hover{text-decoration:underline;}
 .site-footer .f-copy{font-size:12.5px;color:#7d92a1;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);line-height:1.7;}
 @media(max-width:640px){
-  body{padding:36px 18px 56px;}
+  body{padding:36px 18px 20px;}
   .layout{flex-direction:column;}
   .sidenav{width:100%;position:static;flex-direction:row;flex-wrap:wrap;
     padding-right:0;border-right:none;border-bottom:1px solid var(--line);
@@ -271,12 +271,12 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 <div class="layout">
   <nav class="sidenav">
     <div class="sn-section-label">工具</div>
-    <button class="sn-btn active" onclick="switchMain('benchmark')" data-m="benchmark">📊 口說力對標</button>
-    <button class="sn-btn" onclick="switchMain('finder')" data-m="finder">📋 評測方法推薦</button>
+    <button class="sn-btn active" onclick="switchMain('benchmark')" data-m="benchmark">口說力對標</button>
+    <button class="sn-btn" onclick="switchMain('finder')" data-m="finder">評測方法推薦</button>
     <div class="sn-section-label" style="margin-top:16px;">參考資料</div>
-    <button class="sn-btn" onclick="switchMain('case')" data-m="case">🏆 客戶案例</button>
-    <button class="sn-btn" onclick="switchMain('science')" data-m="science">🔬 科學實證 · 對照表</button>
-    <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球市場洞察</button>
+    <button class="sn-btn" onclick="switchMain('case')" data-m="case">客戶案例</button>
+    <button class="sn-btn" onclick="switchMain('science')" data-m="science">科學實證 · 對照表</button>
+    <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">全球市場洞察</button>
   </nav>
   <div class="right-col">
     <div class="head-block">
@@ -344,19 +344,18 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
       <p class="lede">選一套外文評測，看似只是挑產品，其實是一連串決策——您要解決什麼問題、該衡量什麼能力、給誰用。我們把選型的思考方法先攤開，最後再用一個小工具，依您的需求給出建議。</p>
 
       <div class="case-sec">
-        <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看哪五件事</div>
+        <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看的四個面向</div>
         <div class="case-list">
-          <div class="cl"><h5>用途契合度</h5><p>您要做的是招募選才，還是培訓發展？兩者該用不同工具——招募看即戰力，培訓看分項弱點與成長空間。</p></div>
-          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解還是主動口說？先釐清要衡量的能力，再決定用哪一種評測。</p></div>
-          <div class="cl"><h5>產業契合度</h5><p>台灣主場在科技／半導體、金融、大型製造。工具的題型與情境要貼近您的產業場景（國際會議、客戶往來、技術溝通），測出來才有參考價值。</p></div>
-          <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR／GSE），讓台灣與海外據點、不同批次都能一致比較。</p></div>
-          <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，能協助您選、育跨國人才的評測，長期最有價值——這也是台灣企業最大的商機所在。</p></div>
+          <div class="cl"><h5>用途契合度</h5><p>需求不同，看重的點就不同：<br><span style="color:var(--gold);">·</span> 短時間內施測數百人（如 MA 專案）——速度最重要<br><span style="color:var(--gold);">·</span> 針對極少數高階主管、不趕時間——嚴謹度最重要<br><span style="color:var(--gold);">·</span> 納入長期招募政策、常態使用——穩定度與方便性最重要</p></div>
+          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解，還是主動口說？溝通對象是目標一致的自己人，還是有利害關係的上下游廠商與客戶？先釐清這些，再決定要衡量的能力。</p></div>
+          <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR），讓台灣與海外據點、不同批次，都能用同一把尺一致比較。</p></div>
+          <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，評測必須能在全球施測，才能讓各地據點使用同一把尺——這也是台灣企業最大的商機所在。</p></div>
         </div>
       </div>
 
       <div class="case-sec">
         <div class="label"><span class="num">02</span>&nbsp;依您的需求，推薦合適的評測</div>
-        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">回答幾個問題，讓我們依上述五個面向，協助您評估什麼樣的評測最適合貴公司。</p>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">回答幾個問題，讓我們依上述幾個面向，協助您評估什麼樣的評測最適合貴公司。</p>
         <div id="finder-content"></div>
       </div>
     </div>
@@ -364,9 +363,9 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
     <div id="mpanel-insights" class="mpanel">
       <p class="lede">來自 Pearson 全球語言測驗數據的關鍵洞察，協助 HR 做出更有依據的英語評估決策。</p>
       <div class="isubnav">
-        <button class="isn-btn active" onclick="switchI('gap')" data-i="gap">⚠️ 聽讀 vs 口說落差</button>
-        <button class="isn-btn" onclick="switchI('ai')" data-i="ai">🤖 AI 時代與英語能力</button>
-        <button class="isn-btn" onclick="switchI('retain')" data-i="retain">👥 語言培訓 = 留才工具</button>
+        <button class="isn-btn active" onclick="switchI('gap')" data-i="gap">聽讀 vs 口說落差</button>
+        <button class="isn-btn" onclick="switchI('ai')" data-i="ai">AI 時代與英語能力</button>
+        <button class="isn-btn" onclick="switchI('retain')" data-i="retain">語言培訓 = 留才工具</button>
       </div>
       <div id="ipanel-gap" class="ipanel active">
         <div class="card">
@@ -475,8 +474,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
     <!-- PANEL: CASE STUDY -->
     <div id="mpanel-case" class="mpanel">
       <div class="isubnav">
-        <button class="csn-btn active" onclick="switchCase('tech')" data-c="tech">🔬 科技業 · 外文招募</button>
-        <button class="csn-btn" onclick="switchCase('finance')" data-c="finance">🏦 金融業 · MA 儲備幹部招募</button>
+        <button class="csn-btn active" onclick="switchCase('tech')" data-c="tech">科技業 · 外文招募</button>
+        <button class="csn-btn" onclick="switchCase('finance')" data-c="finance">金融業 · MA 儲備幹部招募</button>
       </div>
       <div id="cpanel-tech" class="cpanel active">
       <div class="case-lead">
