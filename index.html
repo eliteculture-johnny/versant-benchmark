@@ -4,212 +4,286 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>企業英文能力健檢 — 精英文化</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --brand:#0A3D6B;--brand-mid:#1A6BB5;--brand-light:#E6F1FB;
-  --orange:#E6760E;--orange-bg:#FFF8F3;--orange-txt:#712B13;
-  --green-bg:#EAF3DE;--green-txt:#27500A;--green-bdr:#3B6D11;
-  --amber-bg:#FAEEDA;--amber-txt:#854F0B;
-  --red-bg:#FCEBEB;--red-txt:#A32D2D;
-  --bg:#fff;--bg2:#F5F5F3;--bg3:#EEEDE8;
-  --txt:#1a1a1a;--txt2:#666660;--txt3:#99998f;
-  --bdr:rgba(0,0,0,0.10);--bdr2:rgba(0,0,0,0.18);
-  --rmd:8px;--rlg:12px;
+  /* Elite Culture palette */
+  --navy:#0e2233;--navy-70:#3d4f5e;--ink:#1a1a1a;--grey:#6b7280;--gold:#b8934a;--line:#e2e5e9;
+  /* semantic (data results only) */
+  --green:#3B6D11;--amber:#8a6400;--red:#A32D2D;
+  /* legacy aliases repointed to new palette */
+  --brand:#0e2233;--brand-mid:#0e2233;--brand-light:#f5f6f8;
+  --txt:#1a1a1a;--txt2:#3d4f5e;--txt3:#6b7280;
+  --bg:#fff;--bg2:#f5f6f8;--bg3:#eef0f2;
+  --bdr:#e2e5e9;--bdr2:#d5d9de;
+  --rmd:0;--rlg:0;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
-  background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;
-  padding:48px 20px 48px;max-width:1080px;margin:0 auto;}
-
-/* HERO */
-.hero{margin-bottom:2rem;}
-.hero-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin-bottom:.4rem;}
-.hero-title{font-size:26px;font-weight:700;color:var(--brand);line-height:1.3;margin-bottom:.4rem;}
-.hero-sub{font-size:14px;color:var(--txt2);}
-
+body{font-family:'Noto Sans TC','Microsoft JhengHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  background:var(--bg);color:var(--ink);font-size:16.5px;line-height:1.9;
+  padding:56px 24px 72px;max-width:1080px;margin:0 auto;}
 /* MAIN LAYOUT */
 .layout{display:flex;align-items:flex-start;}
-.sidenav{width:160px;flex-shrink:0;position:sticky;top:24px;
-  display:flex;flex-direction:column;gap:3px;
-  padding-right:16px;border-right:.5px solid var(--bdr);margin-right:28px;}
+.sidenav{width:170px;flex-shrink:0;position:sticky;top:28px;
+  display:flex;flex-direction:column;gap:2px;
+  padding-right:20px;border-right:1px solid var(--line);margin-right:32px;}
 .right-col{flex:1;min-width:0;display:flex;flex-direction:column;}
 .sn-btn{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;
-  border:none;background:transparent;border-radius:var(--rmd);
-  font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;
-  text-align:left;width:100%;line-height:1.4;transition:all .18s;}
-.sn-btn:hover{background:var(--bg2);color:var(--txt);}
-.sn-section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);padding:4px 12px 2px;}
-.sn-btn.active{background:var(--brand-light);color:var(--brand);
-  border-right:2px solid var(--brand-mid);border-radius:var(--rmd) 0 0 var(--rmd);}
-.right-col{flex:1;min-width:0;}
+  border:none;background:transparent;
+  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;
+  text-align:left;width:100%;line-height:1.5;transition:all .18s;}
+.sn-btn:hover{background:var(--bg2);color:var(--navy);}
+.sn-section-label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);padding:4px 12px 2px;}
+.sn-btn.active{background:var(--bg2);color:var(--navy);font-weight:700;
+  border-right:2px solid var(--gold);}
 .mpanel{display:none;}.mpanel.active{display:block;}
-
-/* SUB TABS */
-.sub-tabs{display:flex;gap:4px;background:var(--bg2);border-radius:var(--rlg);padding:4px;margin-bottom:1.75rem;}
-.stab{flex:1;padding:9px 6px;border:none;background:transparent;border-radius:var(--rmd);
-  font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;text-align:center;transition:all .2s;}
-.stab.active{background:var(--bg);color:var(--txt);border:.5px solid var(--bdr2);box-shadow:0 1px 3px rgba(0,0,0,.06);}
-
+/* SUB TABS (unused fallback, kept hairline) */
+.sub-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:1.75rem;}
+.stab{padding:9px 2px;border:none;background:transparent;border-bottom:2px solid transparent;
+  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:center;transition:all .2s;}
+.stab.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
 /* INSIGHT SUB NAV */
-.isubnav{display:flex;flex-direction:column;gap:3px;margin-bottom:1.5rem;
-  border-left:2px solid var(--bdr);padding-left:16px;}
+.isubnav{display:flex;flex-direction:column;gap:2px;margin-bottom:1.75rem;
+  border-left:1px solid var(--line);padding-left:16px;}
 .isn-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;
-  border:none;background:transparent;border-radius:var(--rmd);
-  font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
-.isn-btn:hover{background:var(--bg2);color:var(--txt);}
-.isn-btn.active{background:var(--brand-light);color:var(--brand);}
+  border:none;background:transparent;
+  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
+.isn-btn:hover{background:var(--bg2);color:var(--navy);}
+.isn-btn.active{color:var(--navy);font-weight:700;}
 .ipanel{display:none;}.ipanel.active{display:block;}
-
+/* KICKER / HERO */
+.kicker{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;}
+.hero-title{font-size:28px;font-weight:700;color:var(--navy);line-height:1.4;letter-spacing:.02em;margin-bottom:12px;}
+.hero-sub{font-size:17px;color:var(--navy-70);}
+.head-block{margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);}
+/* LEDE / INTRO */
+.lede{font-size:16px;color:var(--navy-70);line-height:1.9;margin-bottom:2rem;
+  border-left:2px solid var(--gold);padding:.25rem 0 .25rem 20px;}
 /* FORM */
-.field-label{font-size:13px;color:var(--txt2);margin-bottom:6px;}
-select{width:100%;padding:8px 30px 8px 10px;border:.5px solid var(--bdr2);
-  border-radius:var(--rmd);background:var(--bg);color:var(--txt);
-  appearance:none;-webkit-appearance:none;font-size:14px;font-family:inherit;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 10px center;cursor:pointer;}
-.sel-wrap{margin-bottom:1.5rem;}
-input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:var(--bg3);border-radius:99px;outline:none;cursor:pointer;}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;
-  border-radius:50%;background:var(--brand-mid);cursor:pointer;
-  border:2px solid #fff;box-shadow:0 0 0 1px var(--brand-mid);}
-input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
-  background:var(--brand-mid);cursor:pointer;border:2px solid #fff;}
-
-
+.field-label{font-size:14px;color:var(--navy-70);font-weight:500;margin-bottom:8px;}
+select{width:100%;padding:11px 32px 11px 12px;border:1px solid var(--bdr2);
+  background:var(--bg);color:var(--ink);
+  appearance:none;-webkit-appearance:none;font-size:15px;font-family:inherit;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23b8934a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;}
+select:focus{outline:none;border-color:var(--navy);}
+.sel-wrap{margin-bottom:2rem;}
+input[type=range]{-webkit-appearance:none;width:100%;height:2px;background:var(--line);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;
+  border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--gold);}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
+  background:var(--gold);cursor:pointer;border:2px solid #fff;}
 /* CARDS */
-.card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1.25rem;margin-bottom:1rem;}
-.card-title{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:.25rem;}
-.card-sub{font-size:13px;color:var(--txt2);margin-bottom:1.25rem;}
-
+.card{background:var(--bg);border:1px solid var(--line);padding:1.5rem;margin-bottom:1.5rem;}
+.card-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:.35rem;letter-spacing:.02em;}
+.card-sub{font-size:14px;color:var(--grey);margin-bottom:1.5rem;line-height:1.7;}
 /* BAR CHART */
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
-.bar-label{font-size:12px;color:var(--txt2);width:68px;flex-shrink:0;text-align:right;}
-.bar-outer{flex:1;background:var(--bg2);border-radius:4px;height:22px;overflow:hidden;}
-.bar-inner{height:100%;border-radius:4px;display:flex;align-items:center;
-  padding-left:8px;min-width:40px;transition:width .6s cubic-bezier(.4,0,.2,1);}
-.bar-inner span{font-size:12px;font-weight:600;color:#fff;white-space:nowrap;}
-.bar-cefr{font-size:11px;color:var(--txt3);width:32px;flex-shrink:0;}
-.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:1rem;}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--txt2);}
-.legend-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
-
-/* INSIGHT BOX */
-.ibox{padding:.875rem 1rem;margin-top:.875rem;font-size:13px;line-height:1.65;}
-.ibox.great  {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
-.ibox.good {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
-.ibox.middle {background:var(--amber-bg);color:var(--amber-txt);border-left:3px solid #EF9F27;}
-.ibox.behind {background:var(--amber-bg);color:var(--amber-txt);border-left:3px solid #EF9F27;}
-.ibox.critical{background:var(--red-bg);color:var(--red-txt);border-left:3px solid #E24B4A;}
-
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.bar-label{font-size:13px;color:var(--navy-70);width:96px;flex-shrink:0;text-align:right;line-height:1.4;}
+.bar-outer{flex:1;background:var(--bg2);height:24px;overflow:hidden;}
+.bar-inner{height:100%;display:flex;align-items:center;
+  padding-left:10px;min-width:40px;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.bar-inner span{font-size:12px;font-weight:700;color:#fff;white-space:nowrap;}
+.bar-cefr{font-size:12px;color:var(--grey);width:36px;flex-shrink:0;}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:1.25rem;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);}
+.legend-dot{width:10px;height:10px;flex-shrink:0;}
+/* INSIGHT BOX (semantic result — hairline left border, no fill) */
+.ibox{padding:1rem 0 1rem 20px;margin-top:1.25rem;font-size:14.5px;line-height:1.8;background:#fff;}
+.ibox strong{font-weight:700;}
+.ibox.great,.ibox.good{border-left:2px solid var(--green);color:var(--ink);}
+.ibox.great strong,.ibox.good strong{color:var(--green);}
+.ibox.middle{border-left:2px solid var(--navy);color:var(--ink);}
+.ibox.middle strong{color:var(--navy);}
+.ibox.behind{border-left:2px solid var(--amber);color:var(--ink);}
+.ibox.behind strong{color:var(--amber);}
+.ibox.critical{border-left:2px solid var(--red);color:var(--ink);}
+.ibox.critical strong{color:var(--red);}
 /* FINDER */
-.prog-wrap{margin-bottom:1.5rem;}
-.prog-track{background:var(--bg2);border-radius:99px;height:4px;}
-.prog-fill{background:var(--brand-mid);height:4px;border-radius:99px;transition:width .4s;}
-.prog-lbl{font-size:12px;color:var(--txt2);margin-top:4px;}
-.q-text{font-size:16px;font-weight:600;color:var(--txt);margin-bottom:1rem;}
-.opts{display:flex;flex-direction:column;gap:8px;}
-.opt-btn{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rmd);
-  padding:10px 14px;text-align:left;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;}
-.opt-btn:hover{background:var(--brand-light);border-color:var(--brand-mid);color:var(--brand);}
-.res-grid{display:flex;flex-direction:column;gap:12px;}
-.res-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1.25rem;position:relative;}
-.res-card.top{border:2px solid var(--brand-mid);}
-.rec-badge{position:absolute;top:-10px;left:16px;background:var(--brand-mid);color:#fff;
-  font-size:11px;padding:2px 10px;border-radius:99px;font-weight:600;}
-.res-title{font-size:15px;font-weight:600;color:var(--txt);margin-bottom:3px;}
-.res-sub{font-size:13px;color:var(--txt2);margin-bottom:12px;}
-.res-attrs{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.attr-pill{background:var(--bg2);border-radius:var(--rmd);padding:6px 10px;}
-.attr-pill .k{font-size:11px;color:var(--txt2);display:block;margin-bottom:1px;}
-.attr-pill .v{font-size:13px;color:var(--txt);font-weight:600;}
-.restart-btn{width:100%;margin-top:1rem;padding:10px;background:var(--bg2);
-  border:.5px solid var(--bdr2);border-radius:var(--rmd);font-size:14px;color:var(--txt);cursor:pointer;}
-.back-btn{background:none;border:none;font-size:12px;color:var(--txt2);cursor:pointer;padding:0;text-decoration:underline;}
-
-/* CALLOUTS */
-.callout{padding:.875rem 1rem;font-size:13px;line-height:1.65;margin-top:8px;}
-.callout.orange{background:var(--orange-bg);color:var(--orange-txt);border-left:3px solid var(--orange);}
-.callout.blue  {background:var(--brand-light);color:#0C447C;border-left:3px solid var(--brand-mid);}
-.callout.green {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
-
+.prog-wrap{margin-bottom:1.75rem;}
+.prog-track{background:var(--line);height:2px;}
+.prog-fill{background:var(--gold);height:2px;transition:width .4s;}
+.prog-lbl{font-size:12.5px;color:var(--grey);margin-top:8px;}
+.q-text{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:1.25rem;line-height:1.6;}
+.opts{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+.opt-btn{background:var(--bg);border:none;border-bottom:1px solid var(--line);
+  padding:16px 4px;text-align:left;font-size:15px;color:var(--ink);cursor:pointer;transition:all .15s;line-height:1.6;}
+.opt-btn:hover{color:var(--gold);padding-left:12px;}
+.res-grid{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--navy);}
+.res-card{background:var(--bg);border-bottom:1px solid var(--line);padding:1.5rem 0;position:relative;}
+.res-card.top{border-bottom:1px solid var(--line);}
+.rec-badge{display:inline-block;background:var(--navy);color:var(--gold);
+  font-size:11px;padding:3px 12px;font-weight:600;letter-spacing:.1em;margin-bottom:10px;}
+.res-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.res-sub{font-size:14px;color:var(--grey);margin-bottom:16px;}
+.res-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);}
+.attr-pill{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);}
+.attr-pill:nth-child(odd){border-right:1px solid var(--line);padding-right:16px;}
+.attr-pill:nth-child(even){padding-left:16px;}
+.attr-pill .k{font-size:11.5px;color:var(--grey);display:block;margin-bottom:2px;letter-spacing:.04em;}
+.attr-pill .v{font-size:14px;color:var(--navy);font-weight:700;}
+.restart-btn{width:100%;margin-top:1.5rem;padding:13px;background:var(--bg);
+  border:1px solid var(--bdr2);font-size:14px;color:var(--navy-70);cursor:pointer;letter-spacing:.05em;transition:all .2s;}
+.restart-btn:hover{border-color:var(--navy);color:var(--navy);}
+.back-btn{background:none;border:none;font-size:12.5px;color:var(--grey);cursor:pointer;padding:0;text-decoration:underline;}
+.back-btn:hover{color:var(--navy);}
+/* CALLOUTS (hairline left border, no fill) */
+.callout{padding:1rem 0 1rem 20px;font-size:14.5px;line-height:1.8;margin-top:1rem;background:#fff;}
+.callout.orange{border-left:2px solid var(--gold);color:var(--ink);}
+.callout.blue{border-left:2px solid var(--navy);color:var(--ink);}
+.callout.green{border-left:2px solid var(--gold);color:var(--ink);}
 /* STAT GRID */
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem;}
-.stat-card{background:var(--bg2);border-radius:var(--rmd);padding:.875rem .75rem;text-align:center;}
-.stat-num{font-size:26px;font-weight:700;color:var(--brand);line-height:1;margin-bottom:4px;}
-.stat-lbl{font-size:12px;color:var(--txt2);line-height:1.4;}
-
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:1.75rem;
+  border-top:1px solid var(--navy);border-bottom:1px solid var(--line);}
+.stat-card{padding:22px 16px 18px 0;text-align:left;}
+.stat-card+.stat-card{padding-left:20px;border-left:1px solid var(--line);}
+.stat-num{font-size:27px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:6px;}
+.stat-lbl{font-size:13.5px;color:var(--grey);line-height:1.6;}
 /* INFO CARDS */
-.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1rem;align-items:start;}
-.info-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1rem 1.1rem;height:100%;}
-.info-icon{font-size:18px;margin-bottom:7px;}
-.info-title{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px;}
-.info-body{font-size:12px;color:var(--txt2);line-height:1.6;}
-
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;margin-bottom:1.5rem;align-items:stretch;border-top:1px solid var(--navy);}
+.info-card{background:var(--bg);border-bottom:1px solid var(--line);padding:1.25rem 1.25rem 1.25rem 0;height:100%;}
+.info-card:nth-child(odd){padding-right:24px;}
+.info-card:nth-child(even){padding-left:24px;border-left:1px solid var(--line);}
+.info-icon{font-size:18px;margin-bottom:10px;}
+.info-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.5;}
+.info-body{font-size:13.5px;color:var(--navy-70);line-height:1.8;}
 /* RETENTION */
-.ret-visual{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;margin:1rem 0;align-items:center;}
-.ret-card{border-radius:var(--rlg);padding:1rem;text-align:center;}
-.ret-card.no {background:var(--bg2);border:.5px solid var(--bdr);}
-.ret-card.yes{background:var(--brand-light);border:.5px solid #B5D4F4;}
-.ret-num{font-size:28px;font-weight:700;line-height:1;margin-bottom:4px;}
-.ret-num.no{color:var(--txt2);}.ret-num.yes{color:var(--brand);}
-.ret-lbl{font-size:12px;color:var(--txt2);line-height:1.4;}
-.ret-sub{font-size:10px;color:var(--txt3);margin-top:2px;}
-.vs-mid{font-size:13px;color:var(--txt3);text-align:center;}
-.ppl-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.ppl-dots{display:flex;gap:3px;}
-.dot{width:11px;height:11px;border-radius:50%;}
-.dot.on{background:var(--brand-mid);}
-.dot.off{background:var(--bg2);border:.5px solid var(--bdr2);}
-.ppl-lbl{font-size:13px;color:var(--txt2);}
-
-/* CTA */
-.cta-block{background:var(--brand-light);border:.5px solid #B5D4F4;
-  border-radius:var(--rlg);padding:1.5rem;margin-top:1.5rem;}
-.cta-title{font-size:16px;font-weight:700;color:var(--brand);margin-bottom:.4rem;}
-.cta-sub{font-size:13px;color:#185FA5;margin-bottom:1rem;}
-.cta-contact{display:flex;flex-direction:column;gap:8px;margin-top:.75rem;}
-.cta-contact-row{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--brand);}
-.cta-contact-row a{color:var(--brand);text-decoration:none;font-weight:600;}
+.ret-visual{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin:1.25rem 0;align-items:stretch;border-top:1px solid var(--navy);}
+.ret-card{padding:1.25rem;text-align:center;border-bottom:1px solid var(--line);}
+.ret-card.yes{border-left:2px solid var(--gold);}
+.ret-num{font-size:28px;font-weight:700;line-height:1.2;margin-bottom:6px;}
+.ret-num.no{color:var(--grey);}.ret-num.yes{color:var(--navy);}
+.ret-lbl{font-size:13px;color:var(--navy-70);line-height:1.5;}
+.ret-sub{font-size:11px;color:var(--grey);margin-top:2px;}
+.vs-mid{font-size:13px;color:var(--grey);text-align:center;padding:0 12px;align-self:center;}
+.ppl-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.ppl-dots{display:flex;gap:4px;}
+.dot{width:12px;height:12px;border-radius:50%;}
+.dot.on{background:var(--gold);}
+.dot.off{background:var(--bg2);border:1px solid var(--bdr2);}
+.ppl-lbl{font-size:14px;color:var(--navy-70);}
+/* CTA (navy block, gold outline button) */
+.cta-block{background:var(--navy);border:none;padding:2.5rem;margin-top:2.5rem;}
+.cta-title{font-size:21px;font-weight:700;color:#fff;margin-bottom:.5rem;line-height:1.6;}
+.cta-sub{font-size:14.5px;color:#9fb0be;margin-bottom:1.25rem;}
+.cta-btn{display:inline-block;padding:13px 34px;border:1px solid var(--gold);color:var(--gold);
+  text-decoration:none;font-size:15px;letter-spacing:.16em;font-weight:500;background:transparent;
+  transition:background .2s,color .2s;margin-bottom:1.25rem;}
+.cta-btn:hover{background:var(--gold);color:var(--navy);}
+.cta-contact{display:flex;flex-direction:column;gap:10px;margin-top:.5rem;}
+.cta-contact-row{display:flex;align-items:center;gap:10px;font-size:14.5px;color:#9fb0be;}
+.cta-contact-row a{color:var(--gold);text-decoration:none;font-weight:500;}
 .cta-contact-row a:hover{text-decoration:underline;}
-.cta-note{font-size:12px;color:var(--txt2);margin-top:.75rem;padding-top:.75rem;border-top:.5px solid #B5D4F4;}
-.src-note{font-size:11px;color:var(--txt3);margin-top:1rem;font-style:italic;}
-.ref-section{margin-top:1.5rem;padding-top:1.25rem;border-top:.5px solid var(--bdr);}
-.ref-label{font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase;}
-
-@media(max-width:540px){
-  .hero{padding-left:0;}
+.cta-note{font-size:13.5px;color:#7d92a1;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.15);line-height:1.7;}
+.src-note{font-size:13.5px;color:var(--grey);margin-top:1.25rem;font-style:italic;line-height:1.6;}
+.ref-section{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line);}
+.ref-label{font-size:13px;font-weight:600;color:var(--grey);margin-bottom:1.25rem;letter-spacing:.24em;text-transform:uppercase;}
+/* CASE STUDY */
+.case-lead{border-left:2px solid var(--gold);padding:.5rem 0 .5rem 20px;margin-bottom:2rem;}
+.case-lead .n{font-size:12px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:600;}
+.case-lead h4{font-size:22px;font-weight:700;color:var(--navy);line-height:1.6;margin-bottom:12px;letter-spacing:.02em;}
+.case-lead p{font-size:16px;color:var(--navy-70);line-height:1.9;}
+.case-sec{margin-top:2.25rem;}
+.case-sec>.label{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.24em;color:var(--grey);margin-bottom:20px;font-weight:500;text-transform:uppercase;}
+.case-sec>.label .num{color:var(--gold);font-weight:600;}
+.case-sec>.label::after{content:'';flex:1;height:1px;background:var(--line);}
+.case-eval{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--navy);}
+.case-eval .ce{padding:22px 22px 22px 0;border-bottom:1px solid var(--line);}
+.case-eval .ce+.ce{padding-left:24px;border-left:1px solid var(--line);}
+.case-eval .ce .n{font-size:12px;letter-spacing:.16em;color:var(--gold);margin-bottom:10px;font-weight:600;}
+.case-eval .ce h5{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.5;}
+.case-eval .ce p{font-size:13.5px;color:var(--navy-70);line-height:1.8;}
+.case-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--navy);border-bottom:1px solid var(--line);}
+.case-stats .cs{padding:22px 16px 18px 0;}
+.case-stats .cs+.cs{padding-left:20px;border-left:1px solid var(--line);}
+.case-stats .cs b{display:block;font-size:22px;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:6px;}
+.case-stats .cs b small{font-size:14.5px;color:var(--gold);font-weight:600;margin-left:2px;}
+.case-stats .cs span{font-size:13px;color:var(--grey);line-height:1.6;}
+.case-list{border-top:1px solid var(--navy);}
+.case-list .cl{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);}
+.case-list .cl h5{font-size:15px;font-weight:700;color:var(--navy);line-height:1.6;}
+.case-list .cl p{font-size:14.5px;color:var(--navy-70);line-height:1.8;}
+.csn-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:transparent;
+  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
+.csn-btn:hover{background:var(--bg2);color:var(--navy);}
+.csn-btn.active{color:var(--navy);font-weight:700;}
+.cpanel{display:none;}.cpanel.active{display:block;}
+.conv-table{width:100%;border-collapse:collapse;font-size:15px;}
+.conv-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;color:var(--grey);font-weight:600;padding:0 14px 12px 0;border-bottom:1px solid var(--navy);}
+.conv-table td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);color:var(--navy-70);}
+.conv-table td.cefr{font-weight:700;color:var(--navy);}
+.conv-table td.vs{color:var(--gold);font-weight:600;}
+@media(max-width:640px){
+  .conv-table{font-size:13.5px;}
+  .case-eval{grid-template-columns:1fr;}
+  .case-eval .ce+.ce{padding-left:0;border-left:none;}
+  .case-stats{grid-template-columns:1fr 1fr;}
+  .case-stats .cs,.case-stats .cs+.cs{padding:16px 10px 14px 0;border-left:none;}
+  .case-list .cl{grid-template-columns:1fr;gap:4px;}
+}
+/* TOP BRAND BAR */
+.topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+  padding-bottom:18px;margin-bottom:40px;border-bottom:1px solid var(--navy);}
+.topbar .brand{font-size:19px;font-weight:700;color:var(--navy);letter-spacing:.02em;}
+.topbar .brand span{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.26em;text-transform:uppercase;margin-left:8px;}
+.topbar .tc{display:flex;gap:20px;flex-wrap:wrap;font-size:13.5px;}
+.topbar .tc a{color:var(--navy-70);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.topbar .tc a:hover{color:var(--gold);}
+/* SITE FOOTER */
+.site-footer{margin-top:56px;background:var(--navy);padding:2.75rem 2.5rem;}
+.site-footer .f-brand{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
+.site-footer .f-brand span{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.26em;text-transform:uppercase;margin-left:8px;}
+.site-footer .f-tag{font-size:14.5px;color:#9fb0be;margin-bottom:24px;line-height:1.8;max-width:640px;}
+.site-footer .f-tag a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;}
+.site-footer .f-contact{display:flex;flex-wrap:wrap;gap:14px 36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);}
+.site-footer .f-item{font-size:14.5px;color:#c7d2db;display:flex;align-items:center;gap:8px;}
+.site-footer .f-item a{color:var(--gold);text-decoration:none;font-weight:500;}
+.site-footer .f-item a:hover{text-decoration:underline;}
+.site-footer .f-copy{font-size:12.5px;color:#7d92a1;margin-top:24px;line-height:1.7;}
+@media(max-width:640px){
+  body{padding:36px 18px 56px;}
   .layout{flex-direction:column;}
   .sidenav{width:100%;position:static;flex-direction:row;flex-wrap:wrap;
-    padding-right:0;border-right:none;border-bottom:.5px solid var(--bdr);
-    margin-right:0;margin-bottom:1rem;padding-bottom:.5rem;}
+    padding-right:0;border-right:none;border-bottom:1px solid var(--line);
+    margin-right:0;margin-bottom:1.25rem;padding-bottom:.5rem;}
   .sn-btn{width:auto;flex:1;}
+  .sn-section-label{width:100%;}
+  .hero-title{font-size:24px;}
   .stat-grid{grid-template-columns:1fr 1fr;}
   .ret-visual{grid-template-columns:1fr;}.vs-mid{display:none;}
 }
 </style>
 </head>
 <body>
-
+<header class="topbar">
+  <div class="brand">精英文化 <span>Elite Culture</span></div>
+  <div class="tc">
+    <a href="tel:0227030078">📞 02-2703-0078</a>
+    <a href="mailto:cs@myelearning.com.tw">✉️ cs@myelearning.com.tw</a>
+  </div>
+</header>
 <div class="layout">
   <nav class="sidenav">
     <div class="sn-section-label">工具</div>
     <button class="sn-btn active" onclick="switchMain('benchmark')" data-m="benchmark">📊 口說力對標</button>
-    <button class="sn-btn" onclick="switchMain('finder')" data-m="finder">📋 測評方法推薦</button>
-    <div class="sn-section-label" style="margin-top:12px;">參考資料</div>
+    <button class="sn-btn" onclick="switchMain('finder')" data-m="finder">📋 評測方法推薦</button>
+    <div class="sn-section-label" style="margin-top:16px;">參考資料</div>
+    <button class="sn-btn" onclick="switchMain('case')" data-m="case">🏆 客戶案例</button>
+    <button class="sn-btn" onclick="switchMain('science')" data-m="science">🔬 科學實證 · 對照表</button>
     <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球市場洞察</button>
   </nav>
-
   <div class="right-col">
-    <div style="margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:.5px solid var(--bdr);">
-      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:.4rem;">精英文化 × Pearson 全球數據</div>
-      <div style="font-size:28px;font-weight:700;color:var(--brand);line-height:1.2;margin-bottom:.4rem;">企業英文能力健檢</div>
-      <div style="font-size:14px;color:var(--txt2);">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
+    <div class="head-block">
+      <div class="kicker">精英文化 × Pearson 全球數據</div>
+      <div class="hero-title">企業英文能力健檢</div>
+      <div class="hero-sub">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
     </div>
-
     <!-- PANEL 1: BENCHMARK -->
     <div id="mpanel-benchmark" class="mpanel active">
-        <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">想知道貴公司同仁的英語口說水準，跟全球同產業職場人士相比落在哪裡嗎？<br>請依序選擇<strong>產業別</strong>與同仁的<strong>平均口說程度</strong>，即可看到對標結果。<br>左側「全球市場洞察」有更多 Pearson 全球數據可供參考。</p>
+        <p class="lede">想知道貴公司同仁的英語口說水準，跟全球同產業職場人士相比落在哪裡嗎？請依序選擇<strong>產業別</strong>與同仁的<strong>平均口說程度</strong>，即可看到對標結果——左側「全球市場洞察」另有更多 Pearson 全球數據可供參考。</p>
         <div class="sel-wrap">
           <div class="field-label">貴公司產業</div>
           <select id="sel-industry" onchange="updateChart()">
@@ -222,11 +296,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
             <option value="bpo">BPO / 共享服務</option>
           </select>
         </div>
-
-        <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:2rem;">
           <div id="cefr-section" style="display:none;">
           <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
-          <select id="cefr-select" onchange="updateChart()" style="margin-top:6px;">
+          <select id="cefr-select" onchange="updateChart()" style="margin-top:8px;">
             <option value="" disabled selected>請選擇程度</option>
             <option value="25">A1　　多益約 10–250</option>
             <option value="32">A2　　多益約 255–400</option>
@@ -237,27 +310,25 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
             <option value="71">B2+　多益約 805–870</option>
             <option value="80">C1　　多益約 875–990</option>
           </select>
-          <div style="margin-top:10px;padding:9px 13px;background:#FFF8F3;border-left:3px solid #E6760E;border-radius:0 6px 6px 0;display:flex;gap:8px;align-items:center;">
-            <span style="font-size:13px;flex-shrink:0;line-height:1;">⚠️</span>
-            <span style="font-size:12px;color:#712B13;line-height:1.5;"><strong>超過 7 成的人，口說能力會比多益成績低一個 CEFR 等級以上。</strong>若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</span>
+          <div style="margin-top:14px;padding:12px 0 12px 16px;border-left:2px solid var(--gold);display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:14px;flex-shrink:0;line-height:1.6;">⚠️</span>
+            <span style="font-size:13.5px;color:var(--ink);line-height:1.8;"><strong>超過 7 成的人，口說能力會比多益成績低一個 CEFR 等級以上。</strong>若不確定同仁的口說程度，建議選擇比多益成績低一級作為參考。</span>
           </div>
           </div><!-- end cefr-section -->
         </div>
-
         <div class="card" id="chart-card" style="display:none;">
           <div class="card-title" id="chart-title">科技業 — 口說 GSE 分數對標（全球基準）</div>
-          <div id="bars-container" style="margin-top:1rem;"></div>
+          <div id="bars-container" style="margin-top:1.25rem;"></div>
           <div class="legend">
-            <div class="legend-item"><div class="legend-dot" style="background:#1A6BB5;"></div>全球平均（Pearson 2024 報告）</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#E6760E;"></div>貴公司</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#0e2233;"></div>全球平均（Pearson 2024 報告）</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#b8934a;"></div>貴公司</div>
           </div>
         </div>
         <div id="insight-area" style="display:none;"></div>
-
         <div class="cta-block" id="benchmark-cta" style="display:none;">
-          <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
-          <div class="cta-sub">亦歡迎直接與我們聯繫</div>
+          <div class="cta-title">想進一步了解貴公司的口說基準</div>
+          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
             <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
@@ -265,17 +336,42 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
-
-
     <!-- PANEL: FINDER -->
     <div id="mpanel-finder" class="mpanel">
-      <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">回答幾個問題，讓我們協助您評估什麼樣的測驗最適合貴公司。</p>
-      <div id="finder-content"></div>
-    </div>
+      <p class="lede">選一套外文評測，看似只是挑產品，其實是一連串決策——你要解決什麼問題、該衡量什麼能力、給誰用。我們把選型的思考方法先攤開，最後再用一個小工具，依你的需求給出建議。</p>
 
+      <div class="case-sec">
+        <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看哪五件事</div>
+        <div class="case-list">
+          <div class="cl"><h5>用途契合度</h5><p>你要做的是招募選才，還是培訓發展？兩者該用不同工具——招募看即戰力，培訓看分項弱點與成長空間。</p></div>
+          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解還是主動口說？先釐清要衡量的能力，再決定用哪一種評測。</p></div>
+          <div class="cl"><h5>產業契合度</h5><p>台灣主場在科技／半導體、金融、大型製造。工具的題型與情境要貼近你的產業場景（國際會議、客戶往來、技術溝通），測出來才有參考價值。</p></div>
+          <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR／GSE），讓台灣與海外據點、不同批次都能一致比較。</p></div>
+          <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，能協助你選、育跨國人才的評測，長期最有價值——這也是台灣企業最大的商機所在。</p></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">02</span>&nbsp;我們陪你做決策的方法</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">評測導入不該是憑感覺的冒險。我們用一套結構化的方法，陪企業從釐清需求走到落地驗收：</p>
+        <div class="case-list">
+          <div class="cl"><h5>01　Define 定義問題</h5><p>釐清期望結果與可量化準則。可先用 MVP 小規模驗證，快速與主管、團隊校準期待，確保方向正確。</p></div>
+          <div class="cl"><h5>02　Gather 蒐集資訊</h5><p>蒐集是為了看清全貌，而不是證明自己的觀點是對的。主動尋找不同、甚至相反的觀點，並客觀評估來源可靠性。</p></div>
+          <div class="cl"><h5>03　Generate 創造方案</h5><p>放下既有限制，先追求方案的數量與多元性，點子天馬行空也沒關係。</p></div>
+          <div class="cl"><h5>04　Evaluate 評估方案</h5><p>用效果／代價（CP 值）或權重法客觀評分，同時做風險分析，並提前備好 Plan B。</p></div>
+          <div class="cl"><h5>05　Decide 拍板導入</h5><p>依評估結果做出選擇，先小規模試辦、驗證成效，再全面導入。</p></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">03</span>&nbsp;依你的需求，推薦合適的評測</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">回答幾個問題，讓我們依上述的思考方法，協助你評估什麼樣的評測最適合貴公司。</p>
+        <div id="finder-content"></div>
+      </div>
+    </div>
     <!-- PANEL 2: INSIGHTS -->
     <div id="mpanel-insights" class="mpanel">
-      <p style="font-size:13px;color:var(--txt2);margin-bottom:1.25rem;">來自 Pearson 全球語言測驗數據的關鍵洞察，協助 HR 做出更有依據的英語評估決策。</p>
+      <p class="lede">來自 Pearson 全球語言測驗數據的關鍵洞察，協助 HR 做出更有依據的英語評估決策。</p>
       <div class="isubnav">
         <button class="isn-btn active" onclick="switchI('gap')" data-i="gap">⚠️ 聽讀 vs 口說落差</button>
         <button class="isn-btn" onclick="switchI('ai')" data-i="ai">🤖 AI 時代與英語能力</button>
@@ -285,12 +381,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         <div class="card">
           <div class="card-title">亞太口說分數 8 年幾乎零進步</div>
           <div class="card-sub">2015–2023 年亞太口說從 37 僅微升至 40，與其他地區差距持續</div>
-          <div style="display:flex;gap:14px;margin-bottom:1rem;flex-wrap:wrap;">
-            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:24px;height:3px;background:#E6760E;border-radius:2px;display:inline-block;"></span>亞太及中國</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:24px;height:3px;background:#3BAF7A;border-radius:2px;display:inline-block;"></span>東南亞</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:24px;height:3px;background:#7F77DD;border-radius:2px;display:inline-block;"></span>歐洲</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:24px;height:2px;border-top:2px dashed #888780;display:inline-block;"></span>南亞</span>
-            <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:24px;height:2px;border-top:2px dashed #1A6BB5;display:inline-block;"></span>北美</span>
+          <div style="display:flex;gap:16px;margin-bottom:1.25rem;flex-wrap:wrap;">
+            <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:24px;height:3px;background:#b8934a;display:inline-block;"></span>亞太及中國</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:24px;height:3px;background:#0e2233;display:inline-block;"></span>東南亞</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:24px;height:3px;background:#3d4f5e;display:inline-block;"></span>歐洲</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:24px;height:2px;border-top:2px dashed #6b7280;display:inline-block;"></span>南亞</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:24px;height:2px;border-top:2px dashed #9fb0be;display:inline-block;"></span>北美</span>
           </div>
           <div style="position:relative;width:100%;height:220px;"><canvas id="chart-apac-trend"></canvas></div>
           <div class="src-note">Source: Global English Proficiency Report, Pearson<br>* 數據為各地區使用英語作為第二語言之求職者平均，非該地區全體英語水準。</div>
@@ -301,15 +397,15 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div style="position:relative;width:100%;height:280px;"><canvas id="chart-industry-speaking"></canvas></div>
           <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
         </div>
-               <div class="callout blue">TOEIC 高分無法反映真實口語溝通能力。在亞太地區，超過 7 成受測者的口說能力低於聽讀成績一個 CEFR 等級以上。<br><br>光靠 TOEIC 聽讀成績篩選，會系統性高估同仁在會議、簡報、客戶溝通上的實際口語表現。<br><span style="font-size:11px;opacity:.7;margin-top:6px;display:inline-block;">Source: Global English Proficiency Report, Pearson</span></div>
+        <div class="callout blue">TOEIC 高分無法反映真實口語溝通能力。在亞太地區，超過 7 成受測者的口說能力低於聽讀成績一個 CEFR 等級以上。<br><br>光靠 TOEIC 聽讀成績認識人才，會系統性高估同仁在會議、簡報、客戶溝通上的實際口語表現。<br><span style="font-size:12px;color:var(--grey);margin-top:8px;display:inline-block;">Source: Global English Proficiency Report, Pearson</span></div>
         <div class="ref-section">
           <div class="ref-label">參考數據：日本市場細項（亞太代表性市場）</div>
           <div class="card">
             <div class="card-title">日本整體測驗分數 vs 全球</div>
             <div class="card-sub">口說落差最大（-17 分），遠超 4-Skills 和寫作的差距</div>
-            <div style="display:flex;gap:12px;margin-bottom:1rem;flex-wrap:wrap;">
-              <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:10px;height:10px;border-radius:2px;background:#E6760E;display:inline-block;"></span>日本平均</span>
-              <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:10px;height:10px;border-radius:2px;background:#1A6BB5;display:inline-block;"></span>全球平均</span>
+            <div style="display:flex;gap:16px;margin-bottom:1.25rem;flex-wrap:wrap;">
+              <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:10px;height:10px;background:#b8934a;display:inline-block;"></span>日本平均</span>
+              <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:10px;height:10px;background:#0e2233;display:inline-block;"></span>全球平均</span>
             </div>
             <div style="position:relative;width:100%;height:160px;"><canvas id="chart-japan-overall"></canvas></div>
             <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
@@ -317,18 +413,18 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="card">
             <div class="card-title">日本各產業口說 vs 全球（2023）</div>
             <div class="card-sub">各產業幾乎全停在 B1（GSE 43–45），與全球差距 10–17 分</div>
-            <div style="display:flex;gap:12px;margin-bottom:1rem;flex-wrap:wrap;">
-              <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:10px;height:10px;border-radius:2px;background:#E6760E;display:inline-block;"></span>日本平均</span>
-              <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);"><span style="width:10px;height:10px;border-radius:2px;background:#1A6BB5;display:inline-block;"></span>全球平均</span>
+            <div style="display:flex;gap:16px;margin-bottom:1.25rem;flex-wrap:wrap;">
+              <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:10px;height:10px;background:#b8934a;display:inline-block;"></span>日本平均</span>
+              <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--grey);"><span style="width:10px;height:10px;background:#0e2233;display:inline-block;"></span>全球平均</span>
             </div>
             <div style="position:relative;width:100%;height:300px;"><canvas id="chart-japan-industry"></canvas></div>
             <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
           </div>
         </div>
         <div class="cta-block">
-          <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
-          <div class="cta-sub">亦歡迎直接與我們聯繫</div>
+          <div class="cta-title">想進一步了解這些數據對貴公司的意義</div>
+          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
             <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
@@ -336,7 +432,6 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
-
       <div id="ipanel-ai" class="ipanel">
         <div class="stat-grid">
           <div class="stat-card"><div class="stat-num">92%</div><div class="stat-lbl">Gen Z 認為英語能力對未來 5 年職涯發展至關重要（Pearson 2023 調查）</div></div>
@@ -351,9 +446,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
         <div class="src-note">Sources: World Economic Forum, Financial Times, G-P Global Growth Report, Pearson</div>
         <div class="cta-block">
-          <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
-          <div class="cta-sub">亦歡迎直接與我們聯繫</div>
+          <div class="cta-title">想進一步了解 AI 時代的英語能力盤點</div>
+          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
             <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
@@ -361,25 +456,23 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
-
       <div id="ipanel-retain" class="ipanel">
-        <p style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
-
-        <div style="margin-bottom:1.25rem;">
-          <div style="font-size:13px;color:var(--txt2);margin-bottom:10px;">同仁需求 vs 企業實際提供率</div>
-          <div class="ppl-row"><div class="ppl-dots" id="want-dots"></div><div class="ppl-lbl"><span style="color:var(--brand-mid);font-weight:600;">9/10</span> 同仁希望公司提供語言培訓（Pearson 研究）</div></div>
-          <div class="ppl-row"><div class="ppl-dots" id="have-dots"></div><div class="ppl-lbl">實際上只有 <span style="color:#A32D2D;font-weight:600;">1/3</span> 企業有提供</div></div>
+        <p style="font-size:15px;color:var(--navy-70);margin-bottom:1.5rem;line-height:1.9;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
+        <div style="margin-bottom:1.75rem;">
+          <div style="font-size:14px;color:var(--navy-70);margin-bottom:14px;font-weight:500;">同仁需求 vs 企業實際提供率</div>
+          <div class="ppl-row"><div class="ppl-dots" id="want-dots"></div><div class="ppl-lbl"><span style="color:var(--gold);font-weight:700;">9/10</span> 同仁希望公司提供語言培訓（Pearson 研究）</div></div>
+          <div class="ppl-row"><div class="ppl-dots" id="have-dots"></div><div class="ppl-lbl">實際上只有 <span style="color:var(--red);font-weight:700;">1/3</span> 企業有提供</div></div>
         </div>
         <div class="callout green">當企業開始拓展海外業務、或需要頻繁與外商合作，英語能力的缺口往往才會真正浮現。提早盤點、有計畫地培養，比臨時抱佛腳更能讓同仁在關鍵時刻從容應對。</div>
-        <div class="two-col" style="margin-top:1rem;">
+        <div class="two-col" style="margin-top:1.5rem;">
           <div class="info-card"><div class="info-icon">✅</div><div class="info-title">先知道程度在哪，再決定怎麼培訓</div><div class="info-body">不同職能對英語的需求差很多。業務需要即時口說，工程師可能更需要書面表達。盤點清楚之後，才能把資源放在真正需要的地方。</div></div>
           <div class="info-card"><div class="info-icon">🌏</div><div class="info-title">海外擴張讓語言能力的重要性從隱性變顯性</div><div class="info-body">進軍東南亞、日本或歐美市場的台灣企業，往往在第一線才發現語言是最大的摩擦點。定期評估讓 HR 能提前掌握團隊的準備程度。</div></div>
         </div>
         <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
         <div class="cta-block">
-          <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
-          <div class="cta-sub">亦歡迎直接與我們聯繫</div>
+          <div class="cta-title">想把學習資源，變成留才的理由</div>
+          <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
             <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
@@ -388,10 +481,166 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
       </div>
     </div>
+    <!-- PANEL: CASE STUDY -->
+    <div id="mpanel-case" class="mpanel">
+      <div class="isubnav">
+        <button class="csn-btn active" onclick="switchCase('tech')" data-c="tech">🔬 科技業 · 外文招募</button>
+        <button class="csn-btn" onclick="switchCase('finance')" data-c="finance">🏦 金融業 · MA 儲備幹部招募</button>
+      </div>
+      <div id="cpanel-tech" class="cpanel active">
+      <div class="case-lead">
+        <div class="n">CASE STUDY・外文招募</div>
+        <h4>大型科技業——用 Versant 建立跨區一致的外文招募標準</h4>
+        <p>一家在全台設有多個據點的大型科技企業，面對頻繁的國際研發與技術轉移，將傳統聽讀測驗升級為 Versant 口說實測，讓總部與各據點在同一套高品質基準上排序外文人才。</p>
+      </div>
 
+      <div class="case-sec">
+        <div class="label"><span class="num">01</span>&nbsp;為什麼轉型</div>
+        <div class="two-col">
+          <div class="info-card"><div class="info-title">國際人才需求增加</div><div class="info-body">國際研發與技術轉移頻繁，求職者的口說能力成為錄取關鍵。該企業透過數位轉型，把只看聽讀的傳統測驗，升級為更具參考價值的實戰口說評測。</div></div>
+          <div class="info-card"><div class="info-title">招募標準需要一致</div><div class="info-body">據點分佈全台，人才評量基準必須具備公信力。總部 HR 透過統一採購與後台，確保各單位在同一個高品質基礎上進行人才排序。</div></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">02</span>&nbsp;導入前的嚴謹驗證</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.25rem;">這家企業對外文招募工具的選用相當審慎。正式導入前，HR 團隊針對 Versant 做了三項檢驗：</p>
+        <div class="case-eval">
+          <div class="ce"><div class="n">01</div><h5>防弊實測</h5><p>指派專人嘗試於考試中舞弊。實測發現題型不留思考時間，聽完需即刻開口，受測者無暇查詢或讓外部介入，幾乎沒有作弊空間。</p></div>
+          <div class="ce"><div class="n">02</div><h5>母語者基準驗證</h5><p>邀請母語人士實測，結果精準落於 CEFR C2 最高等級，驗證系統在母語等級溝通辨識上的準確性。</p></div>
+          <div class="ce"><div class="n">03</div><h5>國際檢定交叉對標</h5><p>安排具備 IELTS、TOEFL 成績的同仁受測，Versant 測出的溝通數據與國際專業檢定高度一致。</p></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">03</span>&nbsp;數位化解決方案</div>
+        <div class="case-stats">
+          <div class="cs"><b>30<small> 分鐘</small></b><span>完成聽說讀寫全方位能力測試</span></div>
+          <div class="cs"><b>10<small> 分鐘</small></b><span>自動產出成績報告，效率遠超真人面試</span></div>
+          <div class="cs"><b>培訓建議</b><span>報表含錄取後針對弱點的開發指引</span></div>
+          <div class="cs"><b>客觀評分</b><span>AI 評分，排除主觀偏見與狀態影響</span></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">04</span>&nbsp;總部統一規劃，各據點靈活使用</div>
+        <div class="case-list">
+          <div class="cl"><h5>成績 10 分鐘內產出</h5><p>測驗結束後，系統於 10 分鐘內產出專業、細緻的成績報告，招募時程大幅縮短。</p></div>
+          <div class="cl"><h5>高度客觀評分</h5><p>比起面試官更客觀，排除主觀偏見與個人臨場狀態的影響。</p></div>
+          <div class="cl"><h5>管理平台支援</h5><p>後台完整記錄所有數據，各據點 HR 皆可登入發送測驗，便於人才跨部門複核。</p></div>
+        </div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">05</span>&nbsp;成效與附加價值</div>
+        <div class="case-stats">
+          <div class="cs"><b>600<small>+ 人</small></b><span>單一年度受測規模</span></div>
+          <div class="cs"><b>排除人為主觀</b><span>評測客觀性一致</span></div>
+          <div class="cs"><b>招募工具統一</b><span>全台跨區同一基準</span></div>
+          <div class="cs"><b>精準培訓建議</b><span>錄取後的發展依據</span></div>
+        </div>
+        <div class="callout orange" style="margin-top:1.5rem;">Versant 不只是外文測驗，更兼顧了企業外文招募與盤點的細節需求——在大型組織的導入易用性、後台操作設計上，都為企業所著想。</div>
+      </div>
+      </div><!-- end cpanel-tech -->
+
+      <div id="cpanel-finance" class="cpanel">
+      <div class="case-lead">
+        <div class="n">CASE STUDY・MA 儲備幹部招募</div>
+        <h4>大型金融業——一名 HR，兩週掌握近 500 位求職者的口說實力</h4>
+        <p>在面試前就想掌握近 500 位求職者的口說能力，過去你會怎麼做？多半得一位一位約時間、請人進公司、逐一安排面談——光是排程，往往就足以讓有限的 HR 人力難以負荷。今年的儲備幹部（MA）招募季，這家大型金融業者改用 Versant，讓求職者在家完成口說測驗。面試都還沒開始，HR 就先握有每一位候選人的真實溝通力數據，作為後續面談的重要參考依據（而非硬性門檻）。</p>
+      </div>
+      <div class="case-sec">
+        <div class="label"><span class="num">01</span>&nbsp;挑戰：招募季集中、人力吃緊</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;">MA 招募在短時間內湧入大量應徵者，而負責的 HR 人力有限。若用傳統方式評估口說，得一位一位約時間、請人進公司、橋會議室、排先後順序——光是排程就吃掉大量人力，也拖慢整體招募節奏。</p>
+      </div>
+      <div class="case-sec">
+        <div class="label"><span class="num">02</span>&nbsp;做法：非同步、在家、限期完成</div>
+        <div class="case-list">
+          <div class="cl"><h5>求職者在家考試</h5><p>不需進公司、不需橋會議室，求職者用自己的裝置在家完成，HR 不必安排場地與現場人力。</p></div>
+          <div class="cl"><h5>不用排隊、不排先後</h5><p>在期限內考完即可，無需協調每個人的時段，也不受場次與順序限制。</p></div>
+          <div class="cl"><h5>AI 自動評分</h5><p>系統自動產出標準化成績，一名 HR 就能規模化管理近 500 人的施測與結果。</p></div>
+        </div>
+      </div>
+      <div class="case-sec">
+        <div class="label"><span class="num">03</span>&nbsp;成效</div>
+        <div class="case-stats">
+          <div class="cs"><b>近 500<small> 人</small></b><span>單一招募季受測規模</span></div>
+          <div class="cs"><b>1~2<small> 週</small></b><span>完成全部施測</span></div>
+          <div class="cs"><b>1<small> 名 HR</small></b><span>即可規模化執行</span></div>
+          <div class="cs"><b>面試前</b><span>就掌握口說成績</span></div>
+        </div>
+        <div class="callout orange" style="margin-top:1.5rem;">當人資人力吃緊、或需要在短時間內處理大量招募時，Versant 的在家非同步施測特別有價值：求職者還沒到場，你已經握有客觀的口說數據，面試因此能更聚焦在對的人身上。</div>
+      </div>
+      </div><!-- end cpanel-finance -->
+
+      <div class="cta-block">
+        <div class="cta-title">想在短時間內掌握大量求職者的口說實力</div>
+        <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+        <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
+        <div class="cta-contact">
+          <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+          <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+        </div>
+        <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
+      </div>
+    </div>
+    <!-- PANEL: SCIENCE / CONVERSION -->
+    <div id="mpanel-science" class="mpanel">
+      <p class="lede">Versant 採用 Pearson 超過 25 年研發的專利語音處理技術，AI 評分經全球數百萬筆數據驗證，在客觀性與準確度上媲美人類專家——以下是信效度數據，以及多益與 Versant 的分數對照。</p>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">01</span>&nbsp;AI 評分的信效度</div>
+        <div class="case-stats">
+          <div class="cs"><b>0.99</b><span>分半信度（Split-Half）—— 結果在不同情境下高度穩定一致</span></div>
+          <div class="cs"><b>0.97<small>+</small></b><span>效度（Validity）—— 機器評分與人類專家評分的相關係數</span></div>
+          <div class="cs"><b>25<small> 年</small></b><span>Pearson 專利語音處理技術累積</span></div>
+          <div class="cs"><b>300<small> 萬次</small></b><span>每年全球執行的測驗量</span></div>
+        </div>
+        <div class="callout blue" style="margin-top:1.5rem;">驗證顯示，Versant AI 評分與專家評分呈現極高正相關（r &gt; 0.97）——換句話說，AI 給的分數，和一位資深口說評分專家給的幾乎一致，同時消除了人為偏見與臨場狀態的影響。服務遍及 100+ 國家、逾 1,200 家跨國企業與政府單位。</div>
+      </div>
+
+      <div class="case-sec">
+        <div class="label"><span class="num">02</span>&nbsp;多益 ↔ Versant 分數對照</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">多益與 Versant 都能對標到國際通用的 CEFR 等級，因此可以互相對照。差別在於：多益衡量的是<strong>聽讀理解</strong>，Versant 衡量的是<strong>即時口說產出</strong>——兩者互補，測的是不同能力。</p>
+        <table class="conv-table">
+          <thead><tr><th>CEFR 等級</th><th>多益（聽讀）</th><th>Versant（GSE 分數）</th></tr></thead>
+          <tbody>
+            <tr><td class="cefr">A1</td><td>10 – 250</td><td class="vs">22 – 29</td></tr>
+            <tr><td class="cefr">A2</td><td>255 – 400</td><td class="vs">30 – 35</td></tr>
+            <tr><td class="cefr">A2+</td><td>405 – 500</td><td class="vs">36 – 42</td></tr>
+            <tr><td class="cefr">B1</td><td>505 – 600</td><td class="vs">43 – 50</td></tr>
+            <tr><td class="cefr">B1+</td><td>605 – 700</td><td class="vs">51 – 58</td></tr>
+            <tr><td class="cefr">B2</td><td>705 – 800</td><td class="vs">59 – 66</td></tr>
+            <tr><td class="cefr">B2+</td><td>805 – 870</td><td class="vs">67 – 75</td></tr>
+            <tr><td class="cefr">C1</td><td>875 – 990</td><td class="vs">76 – 84</td></tr>
+          </tbody>
+        </table>
+        <div class="callout orange" style="margin-top:1.5rem;"><strong>重要提醒：對照的是「量表刻度」，不是「同一個人的兩科成績」。</strong>口說是主動產出，比聽讀理解更難，因此同一個人的口說能力，往往比聽讀低一個 CEFR 等級以上——在亞太地區，超過 7 成的人都是如此。若只憑多益聽讀成績推估，容易高估同仁在會議、簡報、客戶溝通上的實際口語表現；建議把 Versant 口說成績當作獨立、更貼近真實溝通場景的參考。<br><span style="font-size:12px;color:var(--grey);margin-top:8px;display:inline-block;">Source: Global English Proficiency Report, Pearson</span></div>
+      </div>
+
+      <div class="cta-block">
+        <div class="cta-title">想確認貴公司同仁的口說，和多益成績差多少</div>
+        <div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div>
+        <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a>
+        <div class="cta-contact">
+          <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+          <div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+        </div>
+        <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
+      </div>
+    </div>
   </div>
 </div>
-
+<footer class="site-footer">
+  <div class="f-brand">精英文化 <span>Elite Culture</span></div>
+  <div class="f-tag">企業人才管理顧問服務——讓數據，支撐每一個招募與培訓決策。<br>歡迎索取 Pearson 口說測驗試測，不需費用，顧問將在 1 個工作天內與您聯繫。<a href="https://www.surveycake.com/s/OLm8Q" target="_blank">預約試測 →</a></div>
+  <div class="f-contact">
+    <div class="f-item">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+    <div class="f-item">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+    <div class="f-item">📍 台北市大安區安和路二段 7 號 8 樓</div>
+  </div>
+  <div class="f-copy">© 2026 精英文化事業股份有限公司・內容數據來源：Global English Proficiency Report, Pearson</div>
+</footer>
 <script>
 // ── DATA ──
 var IND = {
@@ -402,11 +651,9 @@ var IND = {
   telecom:   {label:'電信',          global:61},
   bpo:       {label:'BPO / 共享服務',global:56}
 };
-
 function cefr(v){
   return v<=21?'<A1':v<=29?'A1':v<=35?'A2':v<=42?'A2+':v<=50?'B1':v<=58?'B1+':v<=66?'B2':v<=75?'B2+':v<=84?'C1':'C2';
 }
-
 // ── NAVIGATION ──
 function switchMain(m){
   document.querySelectorAll('.sn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
@@ -414,13 +661,16 @@ function switchMain(m){
   document.getElementById('mpanel-'+m).classList.add('active');
   if(m==='finder') renderFinder();
 }
-
 function switchI(tab){
   document.querySelectorAll('.isn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.i===tab);});
   document.querySelectorAll('.ipanel').forEach(function(p){p.classList.remove('active');});
   document.getElementById('ipanel-'+tab).classList.add('active');
 }
-
+function switchCase(tab){
+  document.querySelectorAll('.csn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.c===tab);});
+  document.querySelectorAll('.cpanel').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('cpanel-'+tab).classList.add('active');
+}
 // ── BENCHMARK ──
 function updateChart(){
   var ind = document.getElementById('sel-industry').value;
@@ -429,12 +679,9 @@ function updateChart(){
   var d = IND[ind];
   var g = d.global;
   var MAX = 90;
-
-  // Step 1: industry selected — show chart with global bar only, reveal CEFR section
   document.getElementById('chart-card').style.display = 'block';
   document.getElementById('cefr-section').style.display = 'block';
   document.getElementById('chart-title').textContent = d.label + ' — 口說 GSE 分數對標（全球基準）';
-
   function makeRow(label, val, bg){
     var pct = Math.round(val/MAX*100);
     return '<div class="bar-row">'
@@ -444,12 +691,10 @@ function updateChart(){
       +'<div class="bar-cefr">'+cefr(val)+'</div>'
       +'</div>';
   }
-
-  // Step 2: if CEFR also selected, show company bar + insight + CTA
   if(sel.value){
     var user = parseInt(sel.value);
     var cefrLabel = sel.options[sel.selectedIndex].text.split('　')[0].trim();
-    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5') + makeRow('貴公司（'+cefrLabel+'）',user,'#E6760E');
+    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#0e2233') + makeRow('貴公司（'+cefrLabel+'）',user,'#b8934a');
     document.getElementById('insight-area').style.display = 'block';
     document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
@@ -470,29 +715,26 @@ function updateChart(){
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
-    // Only global bar shown
-    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#1A6BB5');
+    document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#0e2233');
     document.getElementById('insight-area').style.display = 'none';
     document.getElementById('benchmark-cta').style.display = 'none';
   }
 }
-
-
 // ── FINDER ──
 var answers={}, qIdx=0;
 var QS=[
   {id:'purpose',text:'主要用途是？',opts:[
-    {label:'招募篩選：找出英文達標的應徵者',val:'hire'},
+    {label:'招募選才：認識應徵者的英文實力',val:'hire'},
     {label:'外派人才遴選：評估同仁是否具備海外任職的溝通能力',val:'expat'},
     {label:'培訓前盤點：了解現有同仁程度再規劃課程',val:'ldbase'},
     {label:'培訓後驗收：確認訓練成效',val:'ldpost'},
     {label:'主管層晉升評核',val:'promo'}
   ]},
-  {id:'speaking_focus',text:'這次測評是否針對口說溝通需求較高的職缺或情境？',opts:[
+  {id:'speaking_focus',text:'這次評測是否針對口說溝通需求較高的職缺或情境？',opts:[
     {label:'是，主要評估口說表達與即時溝通能力',val:'yes'},
     {label:'否，主要評估閱讀理解或書面英語能力',val:'no'}
   ]},
-  {id:'global',text:'是否希望建立跨國一致的英語測評標準？',opts:[
+  {id:'global',text:'是否希望建立跨國一致的英語評測標準？',opts:[
     {label:'是，希望台灣、海外據點使用同一套標準，方便橫向比較',val:'yes'},
     {label:'否，目前只需要在台灣內部使用',val:'no'}
   ]},
@@ -514,7 +756,7 @@ var QS=[
   ]}
 ];
 var METHODS={
-  pearson:   {name:'Pearson 口說測驗',sub:'AI 自動評分，17 分鐘完成',attrs:{'時間':'17 分鐘/人','報告速度':'即時','準確度':'GSE/CEFR 標準化','規模':'無限制','成本':'中等'},pros:'AI 客觀評分，全球 100+ 國通用的 CEFR 標準，可大規模部署，適合跨國統一測評需求'},
+  pearson:   {name:'Pearson 口說測驗',sub:'AI 自動評分，17 分鐘完成',attrs:{'時間':'17 分鐘/人','報告速度':'即時','準確度':'GSE/CEFR 標準化','規模':'無限制','成本':'中等'},pros:'AI 客觀評分，全球 100+ 國通用的 CEFR 標準，可大規模部署，適合跨國統一評測需求'},
   toeic_sim: {name:'多益模擬測驗',sub:'精英文化自建平台，TOEIC 對標',attrs:{'時間':'約 30 分鐘/人','報告速度':'即時','準確度':'對標多益分數','規模':'無限制','成本':'低'},pros:'台灣企業最熟悉的評量語言，適合快速盤點大量同仁的聽讀能力'},
   consultant:{name:'外師一對一深度評估',sub:'由外籍顧問進行個別訪談',attrs:{'時間':'30–60 分鐘/人','報告速度':'1–2 週','準確度':'質性 + 情境判斷','規模':'5–30 人','成本':'高'},pros:'能評估臨場應變、溝通風格與文化適應性，適合外派主管遴選或關鍵職缺'}
 };
@@ -522,34 +764,30 @@ function scoreM(k){
   var p=answers.purpose, s=answers.size, sp=answers.speed, b=answers.budget;
   var spk=answers.speaking_focus, glb=answers.global;
   var sc=0;
-
   if(k==='pearson'){
-    if(spk==='yes') sc+=5;          // 口說導向 → 核心優勢
-    if(glb==='yes') sc+=5;          // 需要全球統一 → GSE/CEFR 唯一選擇
+    if(spk==='yes') sc+=5;
+    if(glb==='yes') sc+=5;
     if(['hire','expat','ldbase','ldpost','promo'].indexOf(p)>-1) sc+=2;
-    if(sp==='fast') sc+=2;          // 即時出分
+    if(sp==='fast') sc+=2;
     if(['large','xlarge'].indexOf(s)>-1) sc+=1;
   }
-
   if(k==='toeic_sim'){
-    if(spk==='no')  sc+=5;          // 非口說 → 多益首選
-    if(glb==='no')  sc+=3;          // 只在台灣用 → 多益認可度高
-    if(b==='low')   sc+=3;          // 預算有限
+    if(spk==='no')  sc+=5;
+    if(glb==='no')  sc+=3;
+    if(b==='low')   sc+=3;
     if(['large','xlarge'].indexOf(s)>-1) sc+=2;
     if(['ldbase','ldpost'].indexOf(p)>-1) sc+=2;
-    if(glb==='yes') sc-=4;          // 海外認可度低，扣分
+    if(glb==='yes') sc-=4;
   }
-
   if(k==='consultant'){
-    if(glb==='yes') return -99;     // 無法跨國統一執行，直接排除
-    if(b==='high')  sc+=4;          // 價格不敏感
-    if(sp==='deep') sc+=4;          // 不趕時間
-    if(s==='small') sc+=3;          // 人數少
-    if(glb==='no')  sc+=3;          // 台灣本地
-    if(spk==='yes') sc+=2;          // 口說情境
-    if(['promo','expat'].indexOf(p)>-1) sc+=4;  // 主管遴選、外派
+    if(glb==='yes') return -99;
+    if(b==='high')  sc+=4;
+    if(sp==='deep') sc+=4;
+    if(s==='small') sc+=3;
+    if(glb==='no')  sc+=3;
+    if(spk==='yes') sc+=2;
+    if(['promo','expat'].indexOf(p)>-1) sc+=4;
   }
-
   return sc;
 }
 function renderFinder(){
@@ -573,59 +811,51 @@ function renderResult(){
     return '<div class="res-card '+(i===0?'top':'')+'">'+(i===0?'<div class="rec-badge">最推薦</div>':'')
       +'<div class="res-title">'+m.name+'</div><div class="res-sub">'+m.sub+'</div>'
       +'<div class="res-attrs">'+attrs+'</div>'
-      +'<div style="font-size:12px;color:var(--txt2);margin-top:10px;">'+m.pros+'</div></div>';
+      +'<div style="font-size:13.5px;color:var(--navy-70);margin-top:14px;line-height:1.8;">'+m.pros+'</div></div>';
   }).join('');
   document.getElementById('finder-content').innerHTML=
-    '<div style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">根據您的需求，以下是最適合貴公司的測評方案：</div>'
+    '<div style="font-size:14px;color:var(--navy-70);margin-bottom:1.25rem;">根據您的需求，以下是最適合貴公司的評測方案：</div>'
     +'<div class="res-grid">'+cards+'</div>'
     +'<button class="restart-btn" onclick="resetF()">&#8634; 重新評估</button>'
-    +'<div class="cta-block"><div class="cta-title">有任何問題或想進一步了解？</div><a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a><div class="cta-sub">亦歡迎直接與我們聯繫</div><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
+    +'<div class="cta-block"><div class="cta-title">想確認哪一套方案最適合貴公司</div><div class="cta-sub">歡迎與我們聯繫，顧問將依貴公司的情境提供說明。</div><a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">聯繫我們 →</a><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
 }
-
 function resetF(){answers={};qIdx=0;renderFinder();}
-
 // ── PEOPLE DOTS ──
 function buildDots(id,on,total){
   var el=document.getElementById(id);if(!el)return;
   var h='';for(var i=0;i<total;i++)h+='<div class="dot '+(i<on?'on':'off')+'"></div>';
   el.innerHTML=h;
 }
-
 // ── CHARTS ──
 var CEFR_FN=cefr;
 function gridCol(){return 'rgba(0,0,0,0.06)';}
-function lblCol(){return '#555';}
-
+function lblCol(){return '#6b7280';}
 function makeChart2(){
   var el=document.getElementById('chart-apac-trend');
   if(!el||el._done)return;el._done=true;
   new Chart(el,{type:'line',data:{labels:['2015','2019','2023'],datasets:[
-    {label:'亞太及中國',data:[37,36,40],borderColor:'#E6760E',pointBackgroundColor:'#E6760E',pointRadius:6,pointHoverRadius:8,tension:0.3,fill:false,borderWidth:3},
-    {label:'東南亞',    data:[60,57,56],borderColor:'#3BAF7A',pointBackgroundColor:'#3BAF7A',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2},
-    {label:'歐洲',      data:[49,55,57],borderColor:'#7F77DD',pointBackgroundColor:'#7F77DD',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2},
-    {label:'南亞',      data:[58,56,57],borderColor:'#888780',pointBackgroundColor:'#888780',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2,borderDash:[5,4]},
-    {label:'北美',      data:[59,66,55],borderColor:'#1A6BB5',pointBackgroundColor:'#1A6BB5',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2,borderDash:[3,3]}
+    {label:'亞太及中國',data:[37,36,40],borderColor:'#b8934a',pointBackgroundColor:'#b8934a',pointRadius:6,pointHoverRadius:8,tension:0.3,fill:false,borderWidth:3},
+    {label:'東南亞',    data:[60,57,56],borderColor:'#0e2233',pointBackgroundColor:'#0e2233',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2},
+    {label:'歐洲',      data:[49,55,57],borderColor:'#3d4f5e',pointBackgroundColor:'#3d4f5e',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2},
+    {label:'南亞',      data:[58,56,57],borderColor:'#6b7280',pointBackgroundColor:'#6b7280',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2,borderDash:[5,4]},
+    {label:'北美',      data:[59,66,55],borderColor:'#9fb0be',pointBackgroundColor:'#9fb0be',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2,borderDash:[3,3]}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:function(ctx){var v=ctx.parsed.y;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},scales:{x:{grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:13}}},y:{min:20,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}}}}});
 }
-
 function makeChart3(){
   var el=document.getElementById('chart-industry-speaking');
   if(!el||el._done)return;el._done=true;
-  new Chart(el,{type:'bar',data:{labels:['傳播','電信','科技業','BPO','金融業','電商','IT 服務','醫療','製藥'],datasets:[{label:'全球口說平均',data:[64,61,57,56,56,54,54,46,43],backgroundColor:['#185FA5','#185FA5','#1A6BB5','#378ADD','#378ADD','#85B7EB','#85B7EB','#B5D4F4','#E6F1FB'],borderRadius:4,barPercentage:0.65}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return 'GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:13}}}}}});
+  new Chart(el,{type:'bar',data:{labels:['傳播','電信','科技業','BPO','金融業','電商','IT 服務','醫療','製藥'],datasets:[{label:'全球口說平均',data:[64,61,57,56,56,54,54,46,43],backgroundColor:['#0e2233','#1b3446','#b8934a','#2c4a5f','#3d4f5e','#556673','#6b7c88','#93a3ae','#b9c4cd'],barPercentage:0.65}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return 'GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:13}}}}}});
 }
-
 function makeChart1(){
   var el=document.getElementById('chart-japan-overall');
   if(!el||el._done)return;el._done=true;
-  new Chart(el,{type:'bar',data:{labels:['4-Skills 綜合','口說（Speaking）','寫作（Writing）'],datasets:[{label:'日本平均',data:[42,40,51],backgroundColor:'#E6760E',borderRadius:4,barPercentage:0.5},{label:'全球平均',data:[57,57,61],backgroundColor:'#1A6BB5',borderRadius:4,barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
+  new Chart(el,{type:'bar',data:{labels:['4-Skills 綜合','口說（Speaking）','寫作（Writing）'],datasets:[{label:'日本平均',data:[42,40,51],backgroundColor:'#b8934a',barPercentage:0.5},{label:'全球平均',data:[57,57,61],backgroundColor:'#0e2233',barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
 }
-
 function makeChart4(){
   var el=document.getElementById('chart-japan-industry');
   if(!el||el._done)return;el._done=true;
-  new Chart(el,{type:'bar',data:{labels:['HR 服務','科技業','顧問','零售','金融業','IT 服務','電商','製藥','製造業'],datasets:[{label:'日本平均',data:[45,44,44,44,44,44,43,42,42],backgroundColor:'#E6760E',borderRadius:4,barPercentage:0.5},{label:'全球平均',data:[47,57,55,44,56,54,54,43,47],backgroundColor:'#1A6BB5',borderRadius:4,barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
+  new Chart(el,{type:'bar',data:{labels:['HR 服務','科技業','顧問','零售','金融業','IT 服務','電商','製藥','製造業'],datasets:[{label:'日本平均',data:[45,44,44,44,44,44,43,42,42],backgroundColor:'#b8934a',barPercentage:0.5},{label:'全球平均',data:[47,57,55,44,56,54,54,43,47],backgroundColor:'#0e2233',barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
 }
-
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', function(){
   updateChart();
