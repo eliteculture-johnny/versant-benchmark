@@ -46,13 +46,12 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',-apple-system,BlinkMacSyste
   font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:center;transition:all .2s;}
 .stab.active{color:var(--navy);border-bottom-color:var(--gold);font-weight:700;}
 /* INSIGHT SUB NAV */
-.isubnav{display:flex;flex-direction:column;gap:2px;margin-bottom:1.75rem;
-  border-left:1px solid var(--line);padding-left:16px;}
-.isn-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;
-  border:none;background:transparent;
-  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
-.isn-btn:hover{background:var(--bg2);color:var(--navy);}
-.isn-btn.active{color:var(--navy);font-weight:700;}
+.isubnav{display:flex;flex-direction:column;gap:8px;margin-bottom:1.75rem;}
+.isn-btn{display:flex;align-items:center;gap:8px;padding:11px 14px;
+  border:1px solid var(--bdr2);background:var(--bg);
+  font-size:14px;font-weight:500;color:var(--navy-70);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
+.isn-btn:hover{background:var(--bg2);color:var(--navy);border-color:var(--navy);}
+.isn-btn.active{color:var(--navy);font-weight:700;background:var(--bg2);border-color:var(--navy);border-left:3px solid var(--gold);}
 .ipanel{display:none;}.ipanel.active{display:block;}
 /* KICKER / HERO */
 .kicker{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;}
@@ -206,10 +205,10 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 .case-list .cl{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);}
 .case-list .cl h5{font-size:15px;font-weight:700;color:var(--navy);line-height:1.6;}
 .case-list .cl p{font-size:14.5px;color:var(--navy-70);line-height:1.8;}
-.csn-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border:none;background:transparent;
-  font-size:14px;font-weight:500;color:var(--grey);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
-.csn-btn:hover{background:var(--bg2);color:var(--navy);}
-.csn-btn.active{color:var(--navy);font-weight:700;}
+.csn-btn{display:flex;align-items:center;gap:8px;padding:11px 14px;border:1px solid var(--bdr2);background:var(--bg);
+  font-size:14px;font-weight:500;color:var(--navy-70);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
+.csn-btn:hover{background:var(--bg2);color:var(--navy);border-color:var(--navy);}
+.csn-btn.active{color:var(--navy);font-weight:700;background:var(--bg2);border-color:var(--navy);border-left:3px solid var(--gold);}
 .cpanel{display:none;}.cpanel.active{display:block;}
 .conv-table{width:100%;border-collapse:collapse;font-size:15px;}
 .conv-table th{text-align:left;font-size:12.5px;letter-spacing:.06em;color:var(--grey);font-weight:600;padding:0 14px 12px 0;border-bottom:1px solid var(--navy);}
@@ -333,7 +332,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看的四個面向</div>
         <div class="case-list">
           <div class="cl"><h5>用途契合度</h5><p>需求不同，看重的點就不同：<br><span style="color:var(--gold);">·</span> 短時間內施測數百人（如 MA 專案）——速度最重要<br><span style="color:var(--gold);">·</span> 針對極少數高階主管、不趕時間——嚴謹度最重要<br><span style="color:var(--gold);">·</span> 納入長期招募政策、常態使用——穩定度與方便性最重要</p></div>
-          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解，還是主動口說？溝通對象是目標一致的自己人，還是有利害關係的上下游廠商與客戶？</p></div>
+          <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解，還是主動口說？溝通對象是目標一致的自己人，還是立場不盡相同、得一邊協商一邊合作的上下游廠商與客戶？</p></div>
           <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR），讓台灣與海外據點、不同批次，都能用同一把尺一致比較。</p></div>
           <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，評測必須能在全球施測，才能讓各地據點使用同一把尺——這也是台灣企業最大的商機所在。</p></div>
         </div>
@@ -416,8 +415,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <p style="font-size:15px;color:var(--navy-70);margin-bottom:1.5rem;line-height:1.9;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
         <div style="margin-bottom:1.75rem;">
           <div style="font-size:14px;color:var(--navy-70);margin-bottom:14px;font-weight:500;">同仁需求 vs 企業實際提供率</div>
-          <div class="ppl-row"><div class="ppl-dots" id="want-dots"></div><div class="ppl-lbl"><span style="color:var(--gold);font-weight:700;">9/10</span> 同仁希望公司提供語言培訓（Pearson 研究）</div></div>
-          <div class="ppl-row"><div class="ppl-dots" id="have-dots"></div><div class="ppl-lbl">實際上只有 <span style="color:var(--red);font-weight:700;">1/3</span> 企業有提供</div></div>
+          <div class="ppl-row"><div class="ppl-dots" id="want-dots"></div><div class="ppl-lbl"><span style="color:var(--gold);font-weight:700;">9 成</span> 同仁希望公司提供語言培訓（Pearson 研究）</div></div>
+          <div class="ppl-row"><div class="ppl-dots" id="have-dots"></div><div class="ppl-lbl">實際上只有 <span style="color:var(--red);font-weight:700;">3 成</span> 企業有提供</div></div>
         </div>
         <div class="callout green">當企業開始拓展海外業務、或需要頻繁與外商合作，英語能力的缺口往往才會真正浮現。提早盤點、有計畫地培養，比臨時抱佛腳更能讓同仁在關鍵時刻從容應對。</div>
         <div class="two-col" style="margin-top:1.5rem;">
@@ -437,14 +436,14 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
       <div class="case-lead">
         <div class="n">CASE STUDY・外文招募</div>
         <h4>大型科技業——用 Versant 建立跨區一致的外文招募標準</h4>
-        <p>一家在全台設有多個據點的大型科技企業，面對頻繁的國際研發與技術轉移，將傳統聽讀測驗升級為 Versant 口說實測，讓總部與各據點在同一套高品質基準上排序外文人才。</p>
+        <p>一家在全台設有多個據點的大型科技企業，面對頻繁的國際研發與技術轉移，將傳統聽讀測驗升級為 Versant 口說實測，讓總部與各據點在同一套高品質基準上評估同仁的口說溝通力。</p>
       </div>
 
       <div class="case-sec">
         <div class="label"><span class="num">01</span>&nbsp;為什麼轉型</div>
         <div class="two-col">
           <div class="info-card"><div class="info-title">國際人才需求增加</div><div class="info-body">國際研發與技術轉移頻繁，求職者的口說能力成為錄取關鍵。該企業透過數位轉型，把只看聽讀的傳統測驗，升級為更具參考價值的實戰口說評測。</div></div>
-          <div class="info-card"><div class="info-title">招募標準需要一致</div><div class="info-body">據點分佈全台，人才評量基準必須具備公信力。總部 HR 透過統一採購與後台，確保各單位在同一個高品質基礎上進行人才排序。</div></div>
+          <div class="info-card"><div class="info-title">招募標準需要一致</div><div class="info-body">據點分佈全台，人才評量基準必須具備公信力。總部 HR 透過統一採購與後台，確保各單位在同一個高品質基礎上評估口說溝通力。</div></div>
         </div>
       </div>
 
