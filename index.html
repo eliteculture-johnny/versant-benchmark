@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>企業英文能力健檢 — 精英文化</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -21,50 +18,16 @@
   --bdr:rgba(0,0,0,0.10);--bdr2:rgba(0,0,0,0.18);
   --rmd:8px;--rlg:12px;
 }
-html{background:var(--bg);}
-body{font-family:'Noto Sans TC','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;
-  padding:0 0 56px;margin:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-.page-container{max-width:1080px;margin:0 auto;padding:28px 20px 0;}
-/* TOPBAR */
-.topbar{position:sticky;top:0;z-index:1000;
-  background:#0A3D6B;border-bottom:2px solid var(--orange);}
-.topbar-inner{max-width:1080px;margin:0 auto;padding:11px 20px;
-  display:flex;align-items:center;justify-content:flex-start;gap:16px;flex-wrap:wrap;}
-.topbar-brand{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.topbar-name{font-size:13px;font-weight:700;color:#fff;letter-spacing:.04em;white-space:nowrap;text-transform:uppercase;}
-.topbar-name-sub{font-weight:400;color:rgba(255,255,255,.55);margin-left:5px;font-size:11px;text-transform:none;}
-@media(max-width:680px){
-  .topbar-inner{padding:8px 14px;justify-content:center;gap:8px;}
-  .footer-inner{justify-content:center;padding:8px 14px;}
-  .footer-left{justify-content:center;width:100%;gap:10px;}
-  .footer-contact{justify-content:center;gap:10px;}
-  .footer-contact a{font-size:11px;}
-  .footer-copy{display:none;}
-  body{padding-bottom:64px;}
-}
-/* FOOTER */
-.site-footer{position:fixed;left:0;right:0;bottom:0;z-index:1000;
-  background:#0A3D6B;border-top:2px solid var(--orange);}
-.footer-inner{max-width:1080px;margin:0 auto;padding:9px 20px;
-  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
-.footer-left{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.footer-brand{font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
-.footer-contact{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-.footer-contact a{font-size:12.5px;color:rgba(255,255,255,.88);text-decoration:none;white-space:nowrap;transition:color .15s;}
-.footer-contact a:hover{color:#FFB877;}
-.footer-copy{font-size:10.5px;color:rgba(255,255,255,.4);white-space:nowrap;}
+  padding:48px 20px 48px;max-width:1080px;margin:0 auto;}
+
 /* HERO */
-.hero{margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--bdr);}
-.hero-eyebrow{margin-bottom:.7rem;}
-.hero-badge{display:inline-flex;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.05em;
-  text-transform:uppercase;color:var(--brand-mid);background:var(--brand-light);
-  padding:4px 12px;border-radius:99px;}
-.hero-title-row{display:flex;align-items:center;gap:11px;margin-bottom:.5rem;}
-.hero-title{font-size:30px;font-weight:800;letter-spacing:-.01em;line-height:1.25;color:var(--brand);
-  background:linear-gradient(100deg,var(--brand) 25%,var(--brand-mid));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-sub{font-size:14.5px;color:var(--txt2);}
+.hero{margin-bottom:2rem;}
+.hero-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin-bottom:.4rem;}
+.hero-title{font-size:26px;font-weight:700;color:var(--brand);line-height:1.3;margin-bottom:.4rem;}
+.hero-sub{font-size:14px;color:var(--txt2);}
+
 /* MAIN LAYOUT */
 .layout{display:flex;align-items:flex-start;}
 .sidenav{width:160px;flex-shrink:0;position:sticky;top:24px;
@@ -77,16 +40,17 @@ body{font-family:'Noto Sans TC','Inter',-apple-system,BlinkMacSystemFont,'Segoe 
   text-align:left;width:100%;line-height:1.4;transition:all .18s;}
 .sn-btn:hover{background:var(--bg2);color:var(--txt);}
 .sn-section-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);padding:4px 12px 2px;}
-.sn-btn.active{background:var(--brand-light);color:var(--brand);font-weight:700;
-  border-right:3px solid var(--brand-mid);border-radius:var(--rmd) 0 0 var(--rmd);}
+.sn-btn.active{background:var(--brand-light);color:var(--brand);
+  border-right:2px solid var(--brand-mid);border-radius:var(--rmd) 0 0 var(--rmd);}
 .right-col{flex:1;min-width:0;}
-.mpanel{display:none;}.mpanel.active{display:block;animation:fadeUp .4s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.mpanel{display:none;}.mpanel.active{display:block;}
+
 /* SUB TABS */
 .sub-tabs{display:flex;gap:4px;background:var(--bg2);border-radius:var(--rlg);padding:4px;margin-bottom:1.75rem;}
 .stab{flex:1;padding:9px 6px;border:none;background:transparent;border-radius:var(--rmd);
   font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;text-align:center;transition:all .2s;}
 .stab.active{background:var(--bg);color:var(--txt);border:.5px solid var(--bdr2);box-shadow:0 1px 3px rgba(0,0,0,.06);}
+
 /* INSIGHT SUB NAV */
 .isubnav{display:flex;flex-direction:column;gap:3px;margin-bottom:1.5rem;
   border-left:2px solid var(--bdr);padding-left:16px;}
@@ -94,17 +58,16 @@ body{font-family:'Noto Sans TC','Inter',-apple-system,BlinkMacSystemFont,'Segoe 
   border:none;background:transparent;border-radius:var(--rmd);
   font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;text-align:left;width:100%;transition:all .15s;}
 .isn-btn:hover{background:var(--bg2);color:var(--txt);}
-.isn-btn.active{background:var(--brand-light);color:var(--brand);font-weight:700;}
-.ipanel{display:none;}.ipanel.active{display:block;animation:fadeUp .35s ease;}
+.isn-btn.active{background:var(--brand-light);color:var(--brand);}
+.ipanel{display:none;}.ipanel.active{display:block;}
+
 /* FORM */
 .field-label{font-size:13px;color:var(--txt2);margin-bottom:6px;}
 select{width:100%;padding:8px 30px 8px 10px;border:.5px solid var(--bdr2);
   border-radius:var(--rmd);background:var(--bg);color:var(--txt);
   appearance:none;-webkit-appearance:none;font-size:14px;font-family:inherit;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 10px center;cursor:pointer;
-  transition:border-color .15s,box-shadow .15s;}
-select:focus{outline:none;border-color:var(--brand-mid);box-shadow:0 0 0 3px rgba(26,107,181,.14);}
+  background-repeat:no-repeat;background-position:right 10px center;cursor:pointer;}
 .sel-wrap{margin-bottom:1.5rem;}
 input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:var(--bg3);border-radius:99px;outline:none;cursor:pointer;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;
@@ -112,11 +75,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
   border:2px solid #fff;box-shadow:0 0 0 1px var(--brand-mid);}
 input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
   background:var(--brand-mid);cursor:pointer;border:2px solid #fff;}
+
+
 /* CARDS */
-.card{background:var(--bg);border:1px solid rgba(10,61,107,.08);border-radius:var(--rlg);padding:1.375rem;
-  margin-bottom:1rem;box-shadow:0 1px 2px rgba(10,30,60,.03),0 6px 18px rgba(10,30,60,.05);}
-.card-title{font-size:14.5px;font-weight:700;color:var(--txt);margin-bottom:.25rem;}
+.card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1.25rem;margin-bottom:1rem;}
+.card-title{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:.25rem;}
 .card-sub{font-size:13px;color:var(--txt2);margin-bottom:1.25rem;}
+
 /* BAR CHART */
 .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
 .bar-label{font-size:12px;color:var(--txt2);width:68px;flex-shrink:0;text-align:right;}
@@ -128,13 +93,15 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:1rem;}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--txt2);}
 .legend-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
+
 /* INSIGHT BOX */
-.ibox{padding:1rem 1.1rem;margin-top:.875rem;font-size:13px;line-height:1.7;
-  border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.ibox{padding:.875rem 1rem;margin-top:.875rem;font-size:13px;line-height:1.65;}
 .ibox.great  {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
+.ibox.good {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
 .ibox.middle {background:var(--amber-bg);color:var(--amber-txt);border-left:3px solid #EF9F27;}
 .ibox.behind {background:var(--amber-bg);color:var(--amber-txt);border-left:3px solid #EF9F27;}
 .ibox.critical{background:var(--red-bg);color:var(--red-txt);border-left:3px solid #E24B4A;}
+
 /* FINDER */
 .prog-wrap{margin-bottom:1.5rem;}
 .prog-track{background:var(--bg2);border-radius:99px;height:4px;}
@@ -142,14 +109,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .prog-lbl{font-size:12px;color:var(--txt2);margin-top:4px;}
 .q-text{font-size:16px;font-weight:600;color:var(--txt);margin-bottom:1rem;}
 .opts{display:flex;flex-direction:column;gap:8px;}
-.opt-btn{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--rmd);
-  padding:12px 16px;text-align:left;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;}
-.opt-btn:hover{background:var(--brand-light);border-color:var(--brand-mid);color:var(--brand);
-  transform:translateX(2px);box-shadow:0 2px 8px rgba(10,61,107,.08);}
+.opt-btn{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rmd);
+  padding:10px 14px;text-align:left;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;}
+.opt-btn:hover{background:var(--brand-light);border-color:var(--brand-mid);color:var(--brand);}
 .res-grid{display:flex;flex-direction:column;gap:12px;}
-.res-card{background:var(--bg);border:1px solid rgba(10,61,107,.08);border-radius:var(--rlg);padding:1.25rem;
-  position:relative;box-shadow:0 1px 2px rgba(10,30,60,.03),0 6px 18px rgba(10,30,60,.05);}
-.res-card.top{border:2px solid var(--brand-mid);box-shadow:0 10px 28px rgba(10,61,107,.14);}
+.res-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1.25rem;position:relative;}
+.res-card.top{border:2px solid var(--brand-mid);}
 .rec-badge{position:absolute;top:-10px;left:16px;background:var(--brand-mid);color:#fff;
   font-size:11px;padding:2px 10px;border-radius:99px;font-weight:600;}
 .res-title{font-size:15px;font-weight:600;color:var(--txt);margin-bottom:3px;}
@@ -161,25 +126,26 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .restart-btn{width:100%;margin-top:1rem;padding:10px;background:var(--bg2);
   border:.5px solid var(--bdr2);border-radius:var(--rmd);font-size:14px;color:var(--txt);cursor:pointer;}
 .back-btn{background:none;border:none;font-size:12px;color:var(--txt2);cursor:pointer;padding:0;text-decoration:underline;}
+
 /* CALLOUTS */
 .callout{padding:.875rem 1rem;font-size:13px;line-height:1.65;margin-top:8px;}
 .callout.orange{background:var(--orange-bg);color:var(--orange-txt);border-left:3px solid var(--orange);}
 .callout.blue  {background:var(--brand-light);color:#0C447C;border-left:3px solid var(--brand-mid);}
 .callout.green {background:var(--green-bg);color:var(--green-txt);border-left:3px solid var(--green-bdr);}
+
 /* STAT GRID */
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem;}
-.stat-card{background:var(--bg2);border-radius:var(--rlg);padding:1.1rem .9rem;text-align:center;
-  border-top:3px solid var(--brand-mid);}
-.stat-num{font-size:28px;font-weight:800;color:var(--brand);line-height:1;margin-bottom:5px;}
+.stat-card{background:var(--bg2);border-radius:var(--rmd);padding:.875rem .75rem;text-align:center;}
+.stat-num{font-size:26px;font-weight:700;color:var(--brand);line-height:1;margin-bottom:4px;}
 .stat-lbl{font-size:12px;color:var(--txt2);line-height:1.4;}
+
 /* INFO CARDS */
 .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1rem;align-items:start;}
-.info-card{background:var(--bg);border:1px solid rgba(10,61,107,.08);border-radius:var(--rlg);padding:1.1rem 1.2rem;
-  height:100%;box-shadow:0 1px 2px rgba(10,30,60,.03);transition:box-shadow .2s,transform .2s;}
-.info-card:hover{box-shadow:0 8px 20px rgba(10,30,60,.08);transform:translateY(-2px);}
+.info-card{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rlg);padding:1rem 1.1rem;height:100%;}
 .info-icon{font-size:18px;margin-bottom:7px;}
 .info-title{font-size:13px;font-weight:600;color:var(--txt);margin-bottom:4px;}
 .info-body{font-size:12px;color:var(--txt2);line-height:1.6;}
+
 /* RETENTION */
 .ret-visual{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;margin:1rem 0;align-items:center;}
 .ret-card{border-radius:var(--rlg);padding:1rem;text-align:center;}
@@ -196,14 +162,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .dot.on{background:var(--brand-mid);}
 .dot.off{background:var(--bg2);border:.5px solid var(--bdr2);}
 .ppl-lbl{font-size:13px;color:var(--txt2);}
+
 /* CTA */
-.cta-block{background:linear-gradient(135deg,#EEF6FD,var(--brand-light));border:1px solid #BFDBF5;
-  border-radius:var(--rlg);padding:1.75rem;margin-top:1.5rem;box-shadow:0 8px 24px rgba(10,61,107,.06);}
-.cta-btn{display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--brand-mid),var(--brand));color:#fff;
-  padding:11px 26px;border-radius:var(--rmd);font-size:14px;font-weight:700;text-decoration:none;
-  margin-bottom:1rem;box-shadow:0 6px 16px rgba(10,61,107,.28);transition:transform .15s,box-shadow .15s;}
-.cta-btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(10,61,107,.36);}
+.cta-block{background:var(--brand-light);border:.5px solid #B5D4F4;
+  border-radius:var(--rlg);padding:1.5rem;margin-top:1.5rem;}
 .cta-title{font-size:16px;font-weight:700;color:var(--brand);margin-bottom:.4rem;}
 .cta-sub{font-size:13px;color:#185FA5;margin-bottom:1rem;}
 .cta-contact{display:flex;flex-direction:column;gap:8px;margin-top:.75rem;}
@@ -214,6 +176,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 .src-note{font-size:11px;color:var(--txt3);margin-top:1rem;font-style:italic;}
 .ref-section{margin-top:1.5rem;padding-top:1.25rem;border-top:.5px solid var(--bdr);}
 .ref-label{font-size:12px;font-weight:600;color:var(--txt2);margin-bottom:1rem;letter-spacing:.05em;text-transform:uppercase;}
+
 @media(max-width:540px){
   .hero{padding-left:0;}
   .layout{flex-direction:column;}
@@ -227,18 +190,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
 </style>
 </head>
 <body>
-<!-- 瀏覽次數計數器：每次有人打開這個頁面就會 +1，不需要任何帳號設定。
-     隨時想查目前累積次數，直接在瀏覽器開啟下面這個網址即可看到數字：
-     https://visitor-badge.laobi.icu/badge?page_id=myelearning.qiyingwenhua.benchmark2026 -->
-<img src="https://visitor-badge.laobi.icu/badge?page_id=myelearning.qiyingwenhua.benchmark2026" alt="" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;" />
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-brand">
-      <span class="topbar-name">精英文化 <span class="topbar-name-sub">Elite Culture</span></span>
-    </div>
-  </div>
-</div>
-<div class="page-container">
+
 <div class="layout">
   <nav class="sidenav">
     <div class="sn-section-label">工具</div>
@@ -247,14 +199,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
     <div class="sn-section-label" style="margin-top:12px;">參考資料</div>
     <button class="sn-btn" onclick="switchMain('insights')" data-m="insights">🌐 全球市場洞察</button>
   </nav>
+
   <div class="right-col">
-    <div class="hero">
-      <div class="hero-eyebrow"><span class="hero-badge">精英文化 × Pearson 全球數據</span></div>
-      <div class="hero-title-row">
-        <h1 class="hero-title">企業英文能力健檢</h1>
-      </div>
-      <div class="hero-sub">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
+    <div style="margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:.5px solid var(--bdr);">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);margin-bottom:.4rem;">精英文化 × Pearson 全球數據</div>
+      <div style="font-size:28px;font-weight:700;color:var(--brand);line-height:1.2;margin-bottom:.4rem;">企業英文能力健檢</div>
+      <div style="font-size:14px;color:var(--txt2);">對標全球基準，找到最適合貴公司的評估與培訓方案</div>
     </div>
+
     <!-- PANEL 1: BENCHMARK -->
     <div id="mpanel-benchmark" class="mpanel active">
         <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">想知道貴公司同仁的英語口說水準，跟全球同產業職場人士相比落在哪裡嗎？<br>請依序選擇<strong>產業別</strong>與同仁的<strong>平均口說程度</strong>，即可看到對標結果。<br>左側「全球市場洞察」有更多 Pearson 全球數據可供參考。</p>
@@ -270,6 +222,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
             <option value="bpo">BPO / 共享服務</option>
           </select>
         </div>
+
         <div style="margin-bottom:1.5rem;">
           <div id="cefr-section" style="display:none;">
           <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
@@ -290,6 +243,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
           </div><!-- end cefr-section -->
         </div>
+
         <div class="card" id="chart-card" style="display:none;">
           <div class="card-title" id="chart-title">科技業 — 口說 GSE 分數對標（全球基準）</div>
           <div id="bars-container" style="margin-top:1rem;"></div>
@@ -299,9 +253,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           </div>
         </div>
         <div id="insight-area" style="display:none;"></div>
+
         <div class="cta-block" id="benchmark-cta" style="display:none;">
           <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">填寫表單申請試用 →</a>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
           <div class="cta-sub">亦歡迎直接與我們聯繫</div>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
@@ -310,11 +265,14 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
+
+
     <!-- PANEL: FINDER -->
     <div id="mpanel-finder" class="mpanel">
       <p style="font-size:14px;color:var(--txt2);line-height:1.8;margin-bottom:1.5rem;padding:1rem 1.25rem;background:var(--bg2);border-radius:var(--rlg);">回答幾個問題，讓我們協助您評估什麼樣的測驗最適合貴公司。</p>
       <div id="finder-content"></div>
     </div>
+
     <!-- PANEL 2: INSIGHTS -->
     <div id="mpanel-insights" class="mpanel">
       <p style="font-size:13px;color:var(--txt2);margin-bottom:1.25rem;">來自 Pearson 全球語言測驗數據的關鍵洞察，協助 HR 做出更有依據的英語評估決策。</p>
@@ -369,7 +327,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
         <div class="cta-block">
           <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">填寫表單申請試用 →</a>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
           <div class="cta-sub">亦歡迎直接與我們聯繫</div>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
@@ -378,6 +336,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
+
       <div id="ipanel-ai" class="ipanel">
         <div class="stat-grid">
           <div class="stat-card"><div class="stat-num">92%</div><div class="stat-lbl">Gen Z 認為英語能力對未來 5 年職涯發展至關重要（Pearson 2023 調查）</div></div>
@@ -393,7 +352,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         <div class="src-note">Sources: World Economic Forum, Financial Times, G-P Global Growth Report, Pearson</div>
         <div class="cta-block">
           <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">填寫表單申請試用 →</a>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
           <div class="cta-sub">亦歡迎直接與我們聯繫</div>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
@@ -402,8 +361,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
           <div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div>
         </div>
       </div>
+
       <div id="ipanel-retain" class="ipanel">
         <p style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">台灣企業走向國際的速度愈來愈快，但同仁的英語口說準備度往往跟不上。語言培訓不只影響對外溝通，也直接關係到同仁能否在跨國環境中發揮潛力。</p>
+
         <div style="margin-bottom:1.25rem;">
           <div style="font-size:13px;color:var(--txt2);margin-bottom:10px;">同仁需求 vs 企業實際提供率</div>
           <div class="ppl-row"><div class="ppl-dots" id="want-dots"></div><div class="ppl-lbl"><span style="color:var(--brand-mid);font-weight:600;">9/10</span> 同仁希望公司提供語言培訓（Pearson 研究）</div></div>
@@ -417,7 +378,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         <div class="src-note">Source: Global English Proficiency Report, Pearson</div>
         <div class="cta-block">
           <div class="cta-title">有任何問題或想進一步了解？</div>
-          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">填寫表單申請試用 →</a>
+          <a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:var(--rmd);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a>
           <div class="cta-sub">亦歡迎直接與我們聯繫</div>
           <div class="cta-contact">
             <div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
@@ -427,22 +388,10 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;
         </div>
       </div>
     </div>
+
   </div>
 </div>
-</div><!-- /page-container -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-left">
-      <span class="footer-brand">精英文化</span>
-      <div class="footer-contact">
-        <a href="tel:0227030078">📞 02-2703-0078</a>
-        <a href="mailto:cs@myelearning.com.tw">✉️ cs@myelearning.com.tw</a>
-        <a href="https://www.myelearning.com.tw/" target="_blank">🌐 www.myelearning.com.tw</a>
-      </div>
-    </div>
-    <div class="footer-copy">© 2026 精英文化事業股份有限公司・內容數據來源：Global English Proficiency Report, Pearson</div>
-  </div>
-</footer>
+
 <script>
 // ── DATA ──
 var IND = {
@@ -453,9 +402,11 @@ var IND = {
   telecom:   {label:'電信',          global:61},
   bpo:       {label:'BPO / 共享服務',global:56}
 };
+
 function cefr(v){
   return v<=21?'<A1':v<=29?'A1':v<=35?'A2':v<=42?'A2+':v<=50?'B1':v<=58?'B1+':v<=66?'B2':v<=75?'B2+':v<=84?'C1':'C2';
 }
+
 // ── NAVIGATION ──
 function switchMain(m){
   document.querySelectorAll('.sn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
@@ -463,11 +414,13 @@ function switchMain(m){
   document.getElementById('mpanel-'+m).classList.add('active');
   if(m==='finder') renderFinder();
 }
+
 function switchI(tab){
   document.querySelectorAll('.isn-btn').forEach(function(b){b.classList.toggle('active',b.dataset.i===tab);});
   document.querySelectorAll('.ipanel').forEach(function(p){p.classList.remove('active');});
   document.getElementById('ipanel-'+tab).classList.add('active');
 }
+
 // ── BENCHMARK ──
 function updateChart(){
   var ind = document.getElementById('sel-industry').value;
@@ -476,10 +429,12 @@ function updateChart(){
   var d = IND[ind];
   var g = d.global;
   var MAX = 90;
+
   // Step 1: industry selected — show chart with global bar only, reveal CEFR section
   document.getElementById('chart-card').style.display = 'block';
   document.getElementById('cefr-section').style.display = 'block';
   document.getElementById('chart-title').textContent = d.label + ' — 口說 GSE 分數對標（全球基準）';
+
   function makeRow(label, val, bg){
     var pct = Math.round(val/MAX*100);
     return '<div class="bar-row">'
@@ -489,6 +444,7 @@ function updateChart(){
       +'<div class="bar-cefr">'+cefr(val)+'</div>'
       +'</div>';
   }
+
   // Step 2: if CEFR also selected, show company bar + insight + CTA
   if(sel.value){
     var user = parseInt(sel.value);
@@ -497,14 +453,20 @@ function updateChart(){
     document.getElementById('insight-area').style.display = 'block';
     document.getElementById('benchmark-cta').style.display = 'block';
     var dg = user-g, cls, msg;
-    if(dg>=1){
-      cls='great'; msg='<strong>🎉 貴公司高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
+    if(dg>=10){
+      cls='great'; msg='<strong>🎉 貴公司大幅領先全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說遠高於全球職場英語平均水準，具備強勁的國際競爭力。';
+    } else if(dg>=4){
+      cls='great'; msg='<strong>🎉 貴公司明顯高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說優於全球職場英語平均水準。';
+    } else if(dg>=1){
+      cls='good'; msg='<strong>👍 貴公司略高於全球平均 '+dg+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說達到並略微超越全球職場英語平均水準。';
     } else if(dg===0){
       cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
+    } else if(dg>=-3){
+      cls='behind'; msg='<strong>⚠️ 貴公司略低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說接近但尚未達到全球職場英語平均水準。';
     } else if(dg>=-8){
       cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說尚未達到全球職場英語平均水準。';
     } else {
-      cls='critical'; msg='<strong>🔴 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球職場英語平均水準。';
+      cls='critical'; msg='<strong>🔴 貴公司明顯低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球職場英語平均水準。';
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
@@ -514,6 +476,8 @@ function updateChart(){
     document.getElementById('benchmark-cta').style.display = 'none';
   }
 }
+
+
 // ── FINDER ──
 var answers={}, qIdx=0;
 var QS=[
@@ -558,6 +522,7 @@ function scoreM(k){
   var p=answers.purpose, s=answers.size, sp=answers.speed, b=answers.budget;
   var spk=answers.speaking_focus, glb=answers.global;
   var sc=0;
+
   if(k==='pearson'){
     if(spk==='yes') sc+=5;          // 口說導向 → 核心優勢
     if(glb==='yes') sc+=5;          // 需要全球統一 → GSE/CEFR 唯一選擇
@@ -565,6 +530,7 @@ function scoreM(k){
     if(sp==='fast') sc+=2;          // 即時出分
     if(['large','xlarge'].indexOf(s)>-1) sc+=1;
   }
+
   if(k==='toeic_sim'){
     if(spk==='no')  sc+=5;          // 非口說 → 多益首選
     if(glb==='no')  sc+=3;          // 只在台灣用 → 多益認可度高
@@ -573,6 +539,7 @@ function scoreM(k){
     if(['ldbase','ldpost'].indexOf(p)>-1) sc+=2;
     if(glb==='yes') sc-=4;          // 海外認可度低，扣分
   }
+
   if(k==='consultant'){
     if(glb==='yes') return -99;     // 無法跨國統一執行，直接排除
     if(b==='high')  sc+=4;          // 價格不敏感
@@ -582,6 +549,7 @@ function scoreM(k){
     if(spk==='yes') sc+=2;          // 口說情境
     if(['promo','expat'].indexOf(p)>-1) sc+=4;  // 主管遴選、外派
   }
+
   return sc;
 }
 function renderFinder(){
@@ -611,19 +579,23 @@ function renderResult(){
     '<div style="font-size:13px;color:var(--txt2);margin-bottom:1rem;">根據您的需求，以下是最適合貴公司的測評方案：</div>'
     +'<div class="res-grid">'+cards+'</div>'
     +'<button class="restart-btn" onclick="resetF()">&#8634; 重新評估</button>'
-    +'<div class="cta-block"><div class="cta-title">有任何問題或想進一步了解？</div><a href="https://www.surveycake.com/s/OLm8Q" target="_blank" class="cta-btn">填寫表單申請試用 →</a><div class="cta-sub">亦歡迎直接與我們聯繫</div><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
+    +'<div class="cta-block"><div class="cta-title">有任何問題或想進一步了解？</div><a href="https://www.surveycake.com/s/OLm8Q" target="_blank" style="display:inline-block;background:var(--brand);color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;margin-bottom:1rem;">填寫表單申請試用 →</a><div class="cta-sub">亦歡迎直接與我們聯繫</div><div class="cta-contact"><div class="cta-contact-row">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div><div class="cta-contact-row">📞 <a href="tel:0227030078">02-2703-0078</a></div></div><div class="cta-note">歡迎索取 Pearson 口說測驗試測，不需費用。精英文化顧問將在 1 個工作天內與您聯繫。</div></div>';
 }
+
 function resetF(){answers={};qIdx=0;renderFinder();}
+
 // ── PEOPLE DOTS ──
 function buildDots(id,on,total){
   var el=document.getElementById(id);if(!el)return;
   var h='';for(var i=0;i<total;i++)h+='<div class="dot '+(i<on?'on':'off')+'"></div>';
   el.innerHTML=h;
 }
+
 // ── CHARTS ──
 var CEFR_FN=cefr;
 function gridCol(){return 'rgba(0,0,0,0.06)';}
 function lblCol(){return '#555';}
+
 function makeChart2(){
   var el=document.getElementById('chart-apac-trend');
   if(!el||el._done)return;el._done=true;
@@ -635,21 +607,25 @@ function makeChart2(){
     {label:'北美',      data:[59,66,55],borderColor:'#1A6BB5',pointBackgroundColor:'#1A6BB5',pointRadius:5,pointHoverRadius:7,tension:0.3,fill:false,borderWidth:2,borderDash:[3,3]}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:function(ctx){var v=ctx.parsed.y;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},scales:{x:{grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:13}}},y:{min:20,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}}}}});
 }
+
 function makeChart3(){
   var el=document.getElementById('chart-industry-speaking');
   if(!el||el._done)return;el._done=true;
   new Chart(el,{type:'bar',data:{labels:['傳播','電信','科技業','BPO','金融業','電商','IT 服務','醫療','製藥'],datasets:[{label:'全球口說平均',data:[64,61,57,56,56,54,54,46,43],backgroundColor:['#185FA5','#185FA5','#1A6BB5','#378ADD','#378ADD','#85B7EB','#85B7EB','#B5D4F4','#E6F1FB'],borderRadius:4,barPercentage:0.65}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return 'GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:13}}}}}});
 }
+
 function makeChart1(){
   var el=document.getElementById('chart-japan-overall');
   if(!el||el._done)return;el._done=true;
   new Chart(el,{type:'bar',data:{labels:['4-Skills 綜合','口說（Speaking）','寫作（Writing）'],datasets:[{label:'日本平均',data:[42,40,51],backgroundColor:'#E6760E',borderRadius:4,barPercentage:0.5},{label:'全球平均',data:[57,57,61],backgroundColor:'#1A6BB5',borderRadius:4,barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
 }
+
 function makeChart4(){
   var el=document.getElementById('chart-japan-industry');
   if(!el||el._done)return;el._done=true;
   new Chart(el,{type:'bar',data:{labels:['HR 服務','科技業','顧問','零售','金融業','IT 服務','電商','製藥','製造業'],datasets:[{label:'日本平均',data:[45,44,44,44,44,44,43,42,42],backgroundColor:'#E6760E',borderRadius:4,barPercentage:0.5},{label:'全球平均',data:[47,57,55,44,56,54,54,43,47],backgroundColor:'#1A6BB5',borderRadius:4,barPercentage:0.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.x;return ctx.dataset.label+': GSE '+v+' ('+CEFR_FN(v)+')';}}}},indexAxis:'y',scales:{x:{min:10,max:75,grid:{color:gridCol()},ticks:{color:lblCol(),font:{size:11},callback:function(v){return 'GSE '+v;}}},y:{grid:{display:false},ticks:{color:lblCol(),font:{size:12}}}}}});
 }
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', function(){
   updateChart();
