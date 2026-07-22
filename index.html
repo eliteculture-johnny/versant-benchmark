@@ -285,7 +285,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <p class="lede">想知道貴公司同仁的英語口說水準，跟全球同產業職場人士相比落在哪裡嗎？請依序選擇<strong>產業別</strong>與同仁的<strong>平均口說程度</strong>，即可看到對標結果——左側「全球市場洞察」另有更多 Pearson 全球數據可供參考。</p>
         <div class="sel-wrap">
           <div class="field-label">貴公司產業</div>
-          <select id="sel-industry" onchange="updateChart()">
+          <select id="sel-industry" onchange="updateChart('industry')">
             <option value="" disabled selected>請選擇產業</option>
             <option value="tech">科技業</option>
             <option value="finance">金融業</option>
@@ -298,7 +298,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
         <div style="margin-bottom:2rem;">
           <div id="cefr-section" style="display:none;">
           <div class="field-label">貴公司同仁平均口說程度（CEFR — 全球通用英語能力標準）</div>
-          <select id="cefr-select" onchange="updateChart()" style="margin-top:8px;">
+          <select id="cefr-select" onchange="updateChart('cefr')" style="margin-top:8px;">
             <option value="" disabled selected>請選擇程度</option>
             <option value="25">A1　　多益約 10–250</option>
             <option value="32">A2　　多益約 255–400</option>
@@ -602,7 +602,7 @@ function switchCase(tab){
   document.getElementById('cpanel-'+tab).classList.add('active');
 }
 // ── BENCHMARK ──
-function updateChart(){
+function updateChart(src){
   var ind = document.getElementById('sel-industry').value;
   if(!ind) return;
   var sel = document.getElementById('cefr-select');
@@ -646,6 +646,14 @@ function updateChart(){
   } else {
     document.getElementById('bars-container').innerHTML = makeRow('全球平均',g,'#0e2233');
     document.getElementById('insight-area').style.display = 'none';
+  }
+  // 引導使用者往下看：選完產業後輕輕捲到程度選擇；選完程度後捲到結果
+  if(src==='industry'){
+    var t1=document.getElementById('cefr-section');
+    if(t1) setTimeout(function(){t1.scrollIntoView({behavior:'smooth',block:'center'});},80);
+  } else if(src==='cefr'){
+    var t2=document.getElementById('insight-area');
+    if(t2) setTimeout(function(){t2.scrollIntoView({behavior:'smooth',block:'center'});},80);
   }
 }
 // ── FINDER ──
