@@ -233,16 +233,18 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 .topbar .tc a{color:var(--navy-70);text-decoration:none;display:flex;align-items:center;gap:6px;}
 .topbar .tc a:hover{color:var(--gold);}
 /* SITE FOOTER */
-.site-footer{margin-top:56px;background:var(--navy);padding:2.75rem 2.5rem;}
+.site-footer{margin-top:48px;background:var(--navy);padding:2rem 2.5rem;}
+.footer-inner{display:flex;justify-content:space-between;gap:20px 48px;flex-wrap:wrap;align-items:flex-start;}
+.footer-left{flex:1 1 320px;min-width:280px;max-width:560px;}
 .site-footer .f-brand{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
 .site-footer .f-brand span{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.26em;text-transform:uppercase;margin-left:8px;}
-.site-footer .f-tag{font-size:14.5px;color:#9fb0be;margin-bottom:24px;line-height:1.8;max-width:640px;}
-.site-footer .f-tag a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;}
-.site-footer .f-contact{display:flex;flex-wrap:wrap;gap:14px 36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);}
-.site-footer .f-item{font-size:14.5px;color:#c7d2db;display:flex;align-items:center;gap:8px;}
+.site-footer .f-tag{font-size:14px;color:#9fb0be;line-height:1.8;}
+.site-footer .f-tag a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;white-space:nowrap;}
+.footer-right{display:flex;flex-direction:column;gap:9px;padding-top:2px;flex-shrink:0;}
+.site-footer .f-item{font-size:14px;color:#c7d2db;display:flex;align-items:center;gap:8px;}
 .site-footer .f-item a{color:var(--gold);text-decoration:none;font-weight:500;}
 .site-footer .f-item a:hover{text-decoration:underline;}
-.site-footer .f-copy{font-size:12.5px;color:#7d92a1;margin-top:24px;line-height:1.7;}
+.site-footer .f-copy{font-size:12.5px;color:#7d92a1;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);line-height:1.7;}
 @media(max-width:640px){
   body{padding:36px 18px 56px;}
   .layout{flex-direction:column;}
@@ -254,6 +256,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
   .hero-title{font-size:24px;}
   .stat-grid{grid-template-columns:1fr 1fr;}
   .ret-visual{grid-template-columns:1fr;}.vs-mid{display:none;}
+  .site-footer{padding:1.75rem 1.25rem;}
 }
 </style>
 </head>
@@ -338,34 +341,22 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
       </div>
     <!-- PANEL: FINDER -->
     <div id="mpanel-finder" class="mpanel">
-      <p class="lede">選一套外文評測，看似只是挑產品，其實是一連串決策——你要解決什麼問題、該衡量什麼能力、給誰用。我們把選型的思考方法先攤開，最後再用一個小工具，依你的需求給出建議。</p>
+      <p class="lede">選一套外文評測，看似只是挑產品，其實是一連串決策——您要解決什麼問題、該衡量什麼能力、給誰用。我們把選型的思考方法先攤開，最後再用一個小工具，依您的需求給出建議。</p>
 
       <div class="case-sec">
         <div class="label"><span class="num">01</span>&nbsp;選外文評測，該看哪五件事</div>
         <div class="case-list">
-          <div class="cl"><h5>用途契合度</h5><p>你要做的是招募選才，還是培訓發展？兩者該用不同工具——招募看即戰力，培訓看分項弱點與成長空間。</p></div>
+          <div class="cl"><h5>用途契合度</h5><p>您要做的是招募選才，還是培訓發展？兩者該用不同工具——招募看即戰力，培訓看分項弱點與成長空間。</p></div>
           <div class="cl"><h5>能力契合度</h5><p>這個職缺真正吃重的，是聽讀理解還是主動口說？先釐清要衡量的能力，再決定用哪一種評測。</p></div>
-          <div class="cl"><h5>產業契合度</h5><p>台灣主場在科技／半導體、金融、大型製造。工具的題型與情境要貼近你的產業場景（國際會議、客戶往來、技術溝通），測出來才有參考價值。</p></div>
+          <div class="cl"><h5>產業契合度</h5><p>台灣主場在科技／半導體、金融、大型製造。工具的題型與情境要貼近您的產業場景（國際會議、客戶往來、技術溝通），測出來才有參考價值。</p></div>
           <div class="cl"><h5>標準通用性</h5><p>成績能否對標國際通用標準（CEFR／GSE），讓台灣與海外據點、不同批次都能一致比較。</p></div>
-          <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，能協助你選、育跨國人才的評測，長期最有價值——這也是台灣企業最大的商機所在。</p></div>
+          <div class="cl"><h5>海外擴張關聯度</h5><p>若公司正走向國際，能協助您選、育跨國人才的評測，長期最有價值——這也是台灣企業最大的商機所在。</p></div>
         </div>
       </div>
 
       <div class="case-sec">
-        <div class="label"><span class="num">02</span>&nbsp;我們陪你做決策的方法</div>
-        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">評測導入不該是憑感覺的冒險。我們用一套結構化的方法，陪企業從釐清需求走到落地驗收：</p>
-        <div class="case-list">
-          <div class="cl"><h5>01　Define 定義問題</h5><p>釐清期望結果與可量化準則。可先用 MVP 小規模驗證，快速與主管、團隊校準期待，確保方向正確。</p></div>
-          <div class="cl"><h5>02　Gather 蒐集資訊</h5><p>蒐集是為了看清全貌，而不是證明自己的觀點是對的。主動尋找不同、甚至相反的觀點，並客觀評估來源可靠性。</p></div>
-          <div class="cl"><h5>03　Generate 創造方案</h5><p>放下既有限制，先追求方案的數量與多元性，點子天馬行空也沒關係。</p></div>
-          <div class="cl"><h5>04　Evaluate 評估方案</h5><p>用效果／代價（CP 值）或權重法客觀評分，同時做風險分析，並提前備好 Plan B。</p></div>
-          <div class="cl"><h5>05　Decide 拍板導入</h5><p>依評估結果做出選擇，先小規模試辦、驗證成效，再全面導入。</p></div>
-        </div>
-      </div>
-
-      <div class="case-sec">
-        <div class="label"><span class="num">03</span>&nbsp;依你的需求，推薦合適的評測</div>
-        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">回答幾個問題，讓我們依上述的思考方法，協助你評估什麼樣的評測最適合貴公司。</p>
+        <div class="label"><span class="num">02</span>&nbsp;依您的需求，推薦合適的評測</div>
+        <p style="font-size:15px;color:var(--navy-70);line-height:1.9;margin-bottom:1.5rem;">回答幾個問題，讓我們依上述五個面向，協助您評估什麼樣的評測最適合貴公司。</p>
         <div id="finder-content"></div>
       </div>
     </div>
@@ -547,7 +538,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
       <div class="case-lead">
         <div class="n">CASE STUDY・MA 儲備幹部招募</div>
         <h4>大型金融業——一名 HR，兩週掌握近 500 位求職者的口說實力</h4>
-        <p>在面試前就想掌握近 500 位求職者的口說能力，過去你會怎麼做？多半得一位一位約時間、請人進公司、逐一安排面談——光是排程，往往就足以讓有限的 HR 人力難以負荷。今年的儲備幹部（MA）招募季，這家大型金融業者改用 Versant，讓求職者在家完成口說測驗。面試都還沒開始，HR 就先握有每一位候選人的真實溝通力數據，作為後續面談的重要參考依據（而非硬性門檻）。</p>
+        <p>在面試前就想掌握近 500 位求職者的口說能力，過去您會怎麼做？多半得一位一位約時間、請人進公司、逐一安排面談——光是排程，往往就足以讓有限的 HR 人力難以負荷。今年的儲備幹部（MA）招募季，這家大型金融業者改用 Versant，讓求職者在家完成口說測驗。面試都還沒開始，HR 就先握有每一位候選人的真實溝通力數據，作為後續面談的重要參考依據（而非硬性門檻）。</p>
       </div>
       <div class="case-sec">
         <div class="label"><span class="num">01</span>&nbsp;挑戰：招募季集中、人力吃緊</div>
@@ -569,7 +560,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
           <div class="cs"><b>1<small> 名 HR</small></b><span>即可規模化執行</span></div>
           <div class="cs"><b>面試前</b><span>就掌握口說成績</span></div>
         </div>
-        <div class="callout orange" style="margin-top:1.5rem;">當人資人力吃緊、或需要在短時間內處理大量招募時，Versant 的在家非同步施測特別有價值：求職者還沒到場，你已經握有客觀的口說數據，面試因此能更聚焦在對的人身上。</div>
+        <div class="callout orange" style="margin-top:1.5rem;">當人資人力吃緊、或需要在短時間內處理大量招募時，Versant 的在家非同步施測特別有價值：求職者還沒到場，您已經握有客觀的口說數據，面試因此能更聚焦在對的人身上。</div>
       </div>
       </div><!-- end cpanel-finance -->
 
@@ -632,12 +623,16 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
   </div>
 </div>
 <footer class="site-footer">
-  <div class="f-brand">精英文化 <span>Elite Culture</span></div>
-  <div class="f-tag">企業人才管理顧問服務——讓數據，支撐每一個招募與培訓決策。<br>歡迎索取 Pearson 口說測驗試測，不需費用，顧問將在 1 個工作天內與您聯繫。<a href="https://www.surveycake.com/s/OLm8Q" target="_blank">預約試測 →</a></div>
-  <div class="f-contact">
-    <div class="f-item">📞 <a href="tel:0227030078">02-2703-0078</a></div>
-    <div class="f-item">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
-    <div class="f-item">📍 台北市大安區安和路二段 7 號 8 樓</div>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="f-brand">精英文化 <span>Elite Culture</span></div>
+      <div class="f-tag">企業人才管理顧問服務——讓數據，支撐每一個招募與培訓決策。歡迎索取 Pearson 口說測驗試測，不需費用，顧問將在 1 個工作天內與您聯繫。<a href="https://www.surveycake.com/s/OLm8Q" target="_blank">預約試測 →</a></div>
+    </div>
+    <div class="footer-right">
+      <div class="f-item">📞 <a href="tel:0227030078">02-2703-0078</a></div>
+      <div class="f-item">✉️ <a href="mailto:cs@myelearning.com.tw">cs@myelearning.com.tw</a></div>
+      <div class="f-item">📍 台北市大安區安和路二段 7 號 8 樓</div>
+    </div>
   </div>
   <div class="f-copy">© 2026 精英文化事業股份有限公司・內容數據來源：Global English Proficiency Report, Pearson</div>
 </footer>
@@ -707,11 +702,11 @@ function updateChart(){
     } else if(dg===0){
       cls='middle'; msg='<strong>✅ 貴公司與全球平均持平（'+cefr(user)+'）。</strong>您的團隊英文口說達到全球職場英語平均水準。';
     } else if(dg>=-3){
-      cls='behind'; msg='<strong>⚠️ 貴公司略低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說接近但尚未達到全球職場英語平均水準。';
+      cls='behind'; msg='<strong>貴公司略低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>其實已經很接近全球職場英語水準，只要在口說上再補強一些，就能順利跨過這條線。';
     } else if(dg>=-8){
-      cls='behind'; msg='<strong>⚠️ 貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說尚未達到全球職場英語平均水準。';
+      cls='behind'; msg='<strong>貴公司低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>口說是團隊很值得投入的一塊，只要有計畫地培養，就能逐步拉近與全球水準的距離。';
     } else {
-      cls='critical'; msg='<strong>🔴 貴公司明顯低於全球平均 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>您的團隊英文口說明顯低於全球職場英語平均水準。';
+      cls='critical'; msg='<strong>貴公司目前與全球平均相差 '+Math.abs(dg)+' 分（'+cefr(user)+'）。</strong>這也代表口說是最有提升空間的地方，及早盤點、有計畫地培養，就能一步步補上這段差距。';
     }
     document.getElementById('insight-area').innerHTML = '<div class="ibox '+cls+'">'+msg+'</div>';
   } else {
