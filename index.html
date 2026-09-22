@@ -24,7 +24,7 @@
 }
 body{font-family:'Noto Sans TC','Microsoft JhengHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
   background:var(--bg);color:var(--ink);font-size:16.5px;line-height:1.9;margin:0;}
-.container{max-width:1080px;margin:0 auto;padding:56px 24px 24px;}
+.container{max-width:1080px;margin:0 auto;padding:28px 24px 20px;}
 /* MAIN LAYOUT */
 .layout{display:flex;align-items:flex-start;}
 .sidenav{width:170px;flex-shrink:0;position:sticky;top:28px;
@@ -57,7 +57,7 @@ body{font-family:'Noto Sans TC','Microsoft JhengHei',-apple-system,BlinkMacSyste
 .kicker{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:14px;}
 .hero-title{font-size:28px;font-weight:700;color:var(--navy);line-height:1.4;letter-spacing:.02em;margin-bottom:12px;}
 .hero-sub{font-size:17px;color:var(--navy-70);}
-.head-block{margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);}
+.head-block{margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--line);}
 /* LEDE / INTRO */
 .lede{font-size:16px;color:var(--navy-70);line-height:1.9;margin-bottom:2rem;
   border-left:2px solid var(--gold);padding:.25rem 0 .25rem 20px;}
@@ -225,17 +225,19 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 }
 /* TOP BRAND BAR */
 .topbar{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
-  padding-bottom:18px;margin-bottom:40px;border-bottom:1px solid var(--navy);}
-.topbar .brand{font-size:19px;font-weight:700;color:var(--navy);letter-spacing:.02em;}
+  padding-bottom:16px;margin-bottom:28px;border-bottom:1px solid var(--navy);}
+.topbar .brand{font-size:19px;font-weight:700;color:var(--navy);letter-spacing:.02em;text-decoration:none;display:inline-block;}
+.topbar a.brand:hover{color:var(--gold);}
 .topbar .brand span{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.26em;text-transform:uppercase;margin-left:8px;}
 .topbar .tc{display:flex;gap:20px;flex-wrap:wrap;font-size:13.5px;}
 .topbar .tc a{color:var(--navy-70);text-decoration:none;display:flex;align-items:center;gap:6px;}
 .topbar .tc a:hover{color:var(--gold);}
 /* SITE FOOTER */
-.site-footer{margin-top:32px;background:var(--navy);padding:0.9rem 0;}
+.site-footer{margin-top:24px;background:var(--navy);padding:0.9rem 0;}
 .footer-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:4px 28px;flex-wrap:wrap;}
 .footer-left{display:flex;align-items:baseline;gap:10px;}
-.site-footer .f-brand{font-size:16px;font-weight:700;color:#fff;}
+.site-footer .f-brand{font-size:16px;font-weight:700;color:#fff;text-decoration:none;display:inline-block;}
+.site-footer a.f-brand:hover span:first-child,.site-footer a.f-brand:hover{color:var(--gold);}
 .site-footer .f-brand span{font-size:11px;font-weight:500;color:var(--gold);letter-spacing:.24em;text-transform:uppercase;margin-left:6px;}
 .footer-right{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap;}
 .site-footer .f-item{font-size:13.5px;color:#9fb0be;white-space:nowrap;}
@@ -262,7 +264,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 <body>
 <div class="container">
 <header class="topbar">
-  <div class="brand">精英文化 <span>Elite Culture</span></div>
+  <a class="brand" href="https://www.myelearning.com.tw" target="_blank" rel="noopener">精英文化 <span>Elite Culture</span></a>
   <div class="tc"><span style="color:var(--grey);">數據來源：Global English Proficiency Report, Pearson</span></div>
 </header>
 <div class="layout">
@@ -562,7 +564,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">
-      <span class="f-brand">精英文化 <span>Elite Culture</span></span>
+      <a class="f-brand" href="https://www.myelearning.com.tw" target="_blank" rel="noopener">精英文化 <span>Elite Culture</span></a>
     </div>
     <div class="footer-right">
       <span class="f-item"><a href="tel:0227030078">02-2703-0078</a></span>
